@@ -1,0 +1,383 @@
+/**
+
+ * QUOTES
+
+ */
+ .quote {
+
+  background-color: rgba(0, 0, 0, 0.8);
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: block;
+
+  color: #f5f5f5;
+
+  /* Create the parallax scrolling effect */
+
+  background-attachment: fixed;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+
+  background-size: cover;
+
+}
+
+#FourQuote{padding:50px 0;}
+
+/**
+
+ * WRAPPERS - CLIENTES
+
+ */
+
+.clientes-box {
+
+ 	display: table;
+
+ 	height: 100%;
+
+ 	width: 100%;
+
+}
+
+.gap {margin-bottom: 50px;}
+
+
+/*-----------------------------------------------------------------------------------*/
+
+/*  FOOTER
+
+/*-----------------------------------------------------------------------------------*/
+
+#map-canvas {
+
+  height: 100%;
+
+  position: absolute; 
+
+  top: 0; 
+
+  bottom: -200px; 
+
+  left: 0; 
+
+  right: 0; 
+
+  z-index: 0;
+
+}
+
+#card, .front, .back {
+
+  -moz-transition: all 500ms ease;
+
+  -o-transition: all 500ms ease;
+
+  -webkit-transition: all 500ms ease;
+
+  transition: all 500ms ease;
+
+  height: 300px;
+
+}
+
+.front, .back  {
+
+  background-color: #202835;
+
+  padding: 20px;
+
+}
+
+.back  {position: relative;overflow: hidden;}
+
+.front       {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+
+.front p {
+
+    font-size: 16px;
+
+}
+
+.front h3, .back h3 {
+
+    border-bottom: 1px solid #FB6816;
+
+    color: #FB6816;
+
+}
+
+.back textarea{
+
+    resize: none;
+
+}
+
+.footer {
+
+    background: #000 url("../img/content/bgp.png") repeat;
+
+    text-align: center;
+
+}
+
+p.copy {
+
+    color: #FFF;
+
+}
+
+a.toTop {
+
+    margin: 20px 0;
+
+    display: block;
+
+    text-transform: uppercase;
+
+    color: #FB6816;
+
+    font-size: 25px;
+
+    text-decoration: none;
+
+}
+
+#contacto {
+
+  -webkit-animation-duration: 1s;
+
+  -webkit-animation-delay: 0.5s;
+
+  /*-webkit-animation-iteration-count: 1;*/
+
+}
+
+#msg {
+
+    z-index: 5;
+
+    width: 100%;
+
+    -webkit-animation-duration: 0.5s;
+
+    -webkit-animation-delay: 0.5s;
+
+    /*-webkit-animation-iteration-count: 1;*/
+
+}
+
+/*-----------------------------------------------------------------------------------*/
+
+/*  FOOTER - REDES SOCIALES
+
+/*-----------------------------------------------------------------------------------*/
+
+/* footer social icons */
+
+ul.social-network {
+
+  list-style: none;
+
+  display: inline;
+
+  margin-left:0 !important;
+
+  padding: 0;
+
+}
+
+ul.social-network li {
+
+  display: inline;
+
+  margin: 0 1px;
+
+}
+
+
+
+/* footer social icons */
+
+.social-network a.icoFacebook:hover {background-color:#3B5998;}
+
+.social-network a.icoFacebook > i {color:#3B5998;}
+
+
+
+.social-network a.icoLinkedin:hover {background-color:#007bb7;}
+
+.social-network a.icoLinkedin > i {color:#007bb7;}
+
+
+
+.social-network a.icoTwitter:hover {background-color:#33ccff;}
+
+.social-network a.icoTwitter > i {color:#33ccff;}
+
+
+
+.social-network a.icoYoutube:hover {
+
+  background: linear-gradient(to bottom, #E52D27, #BF171D);
+
+  background: -moz-linear-gradient(to bottom, #E52D27, #BF171D);
+
+  background: -webkit-linear-gradient(to bottom, #E52D27, #BF171D);
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E52D27', endColorstr='#BF171D',GradientType=1 );
+
+}
+
+.social-network a.icoYoutube > i {
+
+  background: linear-gradient(to bottom, #E52D27, #BF171D);
+
+  background: -moz-linear-gradient(to bottom, #E52D27, #BF171D);
+
+  background: -webkit-linear-gradient(to bottom, #E52D27, #BF171D);
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#E52D27', endColorstr='#BF171D',GradientType=1 );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  -moz-background-clip: text;
+
+  -moz-text-fill-color: transparent;
+
+  background-clip: text;
+
+  text-fill-color: transparent;
+
+}
+
+
+
+.social-network a.icoInstagram:hover {
+
+  background: #f09433;
+
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+
+}
+
+.social-network a.icoInstagram > i {
+
+  background: #f09433;
+
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  -moz-background-clip: text;
+
+  -moz-text-fill-color: transparent;
+
+  background-clip: text;
+
+  text-fill-color: transparent;
+
+
+
+}
+
+.social-network a.icoInstagram:hover i, .social-network a.icoYoutube:hover i {text-fill-color: #FFF;-webkit-text-fill-color: #FFF;-moz-text-fill-color: #FFF;}
+
+.social-network a.icoFacebook:hover i, .social-network a.icoLinkedin:hover i, .social-network a.icoInstagram:hover i,
+
+.social-network a.icoTwitter:hover i, .social-network a.icoYoutube:hover i {color:#fff!important;}
+
+
+
+a.socialIcon:hover, .socialHoverClass {color:#44BCDD;}
+
+
+
+.social-circle li a {
+
+  display:inline-block;
+
+  position:relative;
+
+  margin:0 auto 0 auto;
+
+  -moz-border-radius:50%;
+
+  -webkit-border-radius:50%;
+
+  border-radius:50%;
+
+  text-align:center;
+
+  width: 35px ;
+
+  height: 35px ;
+
+  font-size:20px;
+
+}
+
+.social-circle li i {margin:0;line-height:35px;text-align: center;}
+
+
+
+.social-circle li a:hover i, .triggeredHover {
+
+  -moz-transform: rotate(360deg);
+
+  -webkit-transform: rotate(360deg);
+
+  -ms--transform: rotate(360deg);
+
+  transform: rotate(360deg);
+
+  -webkit-transition: all 0.2s;
+
+  -moz-transition: all 0.2s;
+
+  -o-transition: all 0.2s;
+
+  -ms-transition: all 0.2s;
+
+  transition: all 0.2s;
+
+}
+
+.social-circle i {
+
+  -webkit-transition: all 0.8s;
+
+  -moz-transition: all 0.8s;
+
+  -o-transition: all 0.8s;
+
+  -ms-transition: all 0.8s;
+
+  transition: all 0.8s;
+
+}
+
+
+
+.social-network > li > a {background-color: #D3D3D3;}
