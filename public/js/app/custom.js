@@ -7,6 +7,7 @@ $(function(){
     Role();
     UserSystem();
     Visitor();
+    Visitants();
 });
 
 //-------------Funciones JS del modulo register activity------------------------------------------//

@@ -13,9 +13,7 @@
 # Middleware group if user is successfully logged in
 
     //Route que carga el inicio de session
-    Route::get('/login', function () {
-        return view('auth/login');
-    });
+   
     Route::get('/', function(){
         return view('landing');
     });
@@ -33,6 +31,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('places', 'PlaceController');
     Route::resource('users', 'UserController');
     Route::resource('visitors', 'VisitorController');
+
+    Route::get('visitorsList', 'VisitorController@visitorList');
     
     //Route para traer datos en datatables
     
@@ -43,6 +43,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('place', 'PlaceController@getPlace')->name('datatable.place');
     
     Route::get('visitor', 'VisitorController@getVisitor')->name('datatable.visitor');
+
+    Route::get('visitants', 'VisitorController@getVisitors')->name('datatable.visitors');
 
     Route::get('usersystem', 'UserController@getUserSystem')->name('datatable.usersystem');
 

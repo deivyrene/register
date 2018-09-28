@@ -53,6 +53,61 @@ var Visitor = function(table){
 
 };
 
+
+var Visitants = function(table){
+        
+    $('#visitors').DataTable({
+        "language": {"url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"},
+        paging: true,
+        searching: true,
+        "ajax": "/visitants",
+        "columns": [
+            {data: 'nameVisitor', name: 'nameVisitor'},
+            {data: 'surnameVisitor', name: 'surnameVisitor'},
+            {data: 'rutVisitor', name: 'rutVisitor'},
+            {data: 'emailVisitor', name: 'emailVisitor'},
+            {data: 'phoneVisitor', name: 'phoneVisitor'},
+            {data: 'addressVisitor', name: 'addressVisitor'},
+            {data: 'companyVisitor', name: 'companyVisitor'},
+            {data: 'action', name: 'action'}
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+            {   
+                extend:"copy",
+                className:"btn-sm",
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4]
+                },
+            },
+            {   
+                extend:"excel",
+                className:"btn-sm",
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4]
+                },
+            },
+            {   
+                extend:"pdfHtml5",
+                className:"btn-sm",
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4]
+                },
+            },
+            {   
+                extend:"print",
+                className:"btn-sm",
+                exportOptions: {
+                    columns: [ 0, 1, 2, 3, 4]
+                },
+            },
+        ],
+        pageLength: 10,
+    });
+
+};
+
+
 //Eliminar un registro de visitante
 function destroyVisitor(id){
     $.ajax({

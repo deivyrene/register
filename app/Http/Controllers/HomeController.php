@@ -28,21 +28,23 @@ class HomeController extends Controller
     {
         $request->user()->authorizeRoles(['user','admin']);
 
+        $tipo = $request->user()->typeRole();
+
         $countEdifice= Edifice::all()->count();
         $countVisitor = Visitor::all()->count();
+        $countVisitants = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
+                                           ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')->count();
 
-        //$lastUser = BusinessUser::orderby('created_at','DESC')->take(3)->get();
 
-       /* $lastActivity = RegisterActivity::OrderBy('created_at','desc')
-                                        ->with([
-                                                'companies' => function($query) {
-                                                    $query->select('id','nameCompany');
-                                                },
-                                                'consultants' => function($query) {
-                                                    $query->select('id','nameConsultant');
-                                                }
-                                        ])->groupBy('codActivity')->take(3)->get();*/
+        if($tipo == "admin")
+        {
+            return view('index', compact('countEdifice', 'countVisitor', 'countVisitants'));
+        }
+        else
+        {
+            return view('landing');
+        }
 
-        return view('index', compact('countEdifice', 'countVisitor'));
+        
     }
 }

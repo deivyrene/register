@@ -37,7 +37,7 @@
                             <i class="material-icons">notifications</i>
                             <span class="notification">5</span>
                             <p>
-                                <span class="d-lg-none d-md-block">Some Actions</span>
+                                <span class="d-lg-none d-md-block">Acciones</span>
                             </p>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">

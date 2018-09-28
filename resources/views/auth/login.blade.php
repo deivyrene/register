@@ -1,19 +1,18 @@
-@extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 ml-auto mr-auto">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
 
             <form class="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
-                <div class="card card-login" style="margin-top: 150px">
 
-                        <div class="card-header card-header-danger  text-center">
-                             <h4 class="card-title">INGRESAR</h4>
-                        </div>
-
-                        <div class="card-body">
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email" class="col-md-4 control-label">E-Mail</label>
 
@@ -41,33 +40,19 @@
                                     @endif
                                 </div>
                             </div>
-                            
-                                <!--<div class="form-group">
-                                    <div class="col-md-6 col-md-offset-4">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Recordarme
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>-->
-                                <div class="form-group">
-                                    <div class="row">
-                                    <div class="col-md-12 col-md-offset-4 text-center">
-                                        <button type="submit" class="btn btn-success">
-                                            Login
-                                        </button>
-
-                                        <!--<a class="btn btn-link" href="{{ route('password.request') }}">
-                                            Olvido su contraseña?
-                                        </a>-->
-                                    </div>
-                                    </div>
+                        
+            </div>
+                    <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-12 col-md-offset-4 text-center">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-success">
+                                        Login
+                                    </button>
                                 </div>
-                        </div>
-                </div>
-             </form>
+                            </div>
+                    </div>
+           </form>
+          </div>
         </div>
-    </div>
-</div>
-@endsection
+      </div>

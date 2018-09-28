@@ -43,21 +43,35 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#about">Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#services">Servicios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#portfolio">Clientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#contact">Contáctanos</a>
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="#about">Ingresar</a>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="#about">Nosotros</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="#services">Servicios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="#portfolio">Clientes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link js-scroll-trigger" href="#contact">Contáctanos</a>
+                            </li>
+                            @if(Auth::guest())
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#exampleModal">Ingresar</a>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" title="Clic para cerrar" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                       {{ Auth::user()->name }} 
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                     </div>

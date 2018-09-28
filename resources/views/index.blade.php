@@ -45,8 +45,8 @@
                     <div class="card-icon">
                         <i class="material-icons">table_chart</i>
                     </div>
-                    <p class="card-category">Actividades</p>
-                    <h3 class="card-title"> </h3>
+                    <p class="card-category">Visitas</p>
+                    <h3 class="card-title"> +{{ $countVisitants }}</h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">

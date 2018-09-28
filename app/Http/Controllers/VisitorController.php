@@ -21,6 +21,36 @@ class VisitorController extends Controller
         
         return view('visitors.index');
     }
+
+    public function visitorList(Request $request){
+        
+        $request->user()->authorizeRoles(['user','admin']);
+
+        return view('visitors.visitors');
+    }
+
+    public function getVisitors(Request $request)
+    {  
+        $role = $request->user()->typeRole();
+
+        if($role == "admin"){
+            
+            $visitor = \DB::table('visitors')->join('place_visitors', 'place_visitors.visitor_id', '=', 'visitors.id' )
+                                             ->join('places', 'places.id', '=', 'place_visitors.place_id')
+                                             ->groupBy('emailVisitor');
+        }else{
+
+            $edifice_id = $request->user()->hasEdifice();
+
+            $visitor = \DB::table('visitors')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
+                                           ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
+                                           ->where('edifice_id', $edifice_id);
+        } 
+
+         return Datatables::of($visitor)->addColumn('action', function ($user) {
+             return '<a href="#" onclick="outVisitor('.$user->id.')" class="btn btn-sm btn-success"><i class="material-icons">swap_horiz</i></a>';
+         })->make(true);
+    }
  
     public function getVisitor(Request $request)
     {  

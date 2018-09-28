@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @extends('auth.login')
     
     <header class="masthead text-center text-white d-flex">
       <div class="container my-auto">
@@ -284,8 +286,7 @@
     <footer class="page-footer bg-dark text-white">
 
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2018 Copyright:
-          <a href="http://www.sipcom.cl"> Sipcom</a>
+        <div class="footer-copyright text-center py-3"><img class="logo" src="landing/img/footer-logo.png" alt="Asesorias Computacionales Sipcom Limitada">
         </div>
         <!-- Copyright -->
       

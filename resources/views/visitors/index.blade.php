@@ -8,7 +8,7 @@
         <div class="card">
                 <div class="card-header card-header-primary" style="background:#383131">
                     <h4 class="card-title ">
-                        Listado Visitantes
+                        Listado de Visitas
                         <a href="{{ route('visitors.create') }}" class="btn btn-sm btn-danger pull-right">Nuevo</a>
                     </h4>
                    <!-- <p class="card-category"> Here is a subtitle for this table</p>-->
