@@ -23,7 +23,6 @@
 
 Route::group(['middleware' => ['auth']], function () {
 
-
     //Route generales con sus funciones básicas
    
     Route::resource('edifices', 'EdificeController');

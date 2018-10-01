@@ -31,6 +31,8 @@
         @endif
 </div>
 
+
+
 <div class="form-group">
         {{ Form::label('password-confirm', 'Confirmar Contraseña') }}
         {{ Form::password('password_confirmation', ['class'=>'form-control','id'=>'password-confirmation']) }}
@@ -41,7 +43,7 @@
     <select class="form-control" name="edifice_id" id="edifice_id">
                     <option value="0">Seleccione</option>
             @foreach($edifice as $edifices)
-                    <option value="<?= $edifices->id ?>" <?php if(isset($place)){ if($place->edifice_id == $edifice->id){ echo "selected"; } }?> >{{$edifices->nameEdifice}}</option>
+                    <option value="<?= $edifices->id ?>" <?php if(isset($userEdifice)){ if($userEdifice == $edifices->id){ echo "selected"; } }?> >{{$edifices->nameEdifice}}</option>
             @endforeach
     </select>
 </div>
@@ -51,7 +53,7 @@
     <select class="form-control"  name="role_id" id="role_id">
                     <option value="0">Seleccione</option>
             @foreach($role as $roles)
-                    <option value="<?= $roles->id ?>" >{{$roles->nameRole}}</option>
+                    <option value="<?= $roles->id ?>" <?php if(isset($userRole)){ if($userRole == $roles->id){ echo "selected"; } }?>>{{$roles->nameRole}}</option>
             @endforeach
     </select>
 </div>

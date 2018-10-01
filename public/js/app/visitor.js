@@ -10,7 +10,7 @@ var Visitor = function(table){
         "columns": [
             {data: 'nameVisitor', name: 'nameVisitor'},
             {data: 'surnameVisitor', name: 'surnameVisitor'},
-            {data: 'numberPlace', name: 'numberPlace'},
+            {data: 'companyVisitor', name: 'companyVisitor'},
             {data: 'numberPlace', name: 'numberPlace'},
             {data: 'namePlace', name: 'namePlace'},
             {data: 'arrivalTime', name: 'arrivalTime'},
@@ -174,6 +174,7 @@ $('#saveVisitor').click(function(){
     var emailVisitor = $('#emailVisitor').val();
     var addressVisitor = $('#addressVisitor').val();
     var phoneVisitor = $('#phoneVisitor').val();
+    var companyVisitor = $('#companyVisitor').val();
     var place_id = $('#place_id').val();
     var visitor_id = $('#visitor_id').val();
     var comments = $('#comments').val();
@@ -189,6 +190,7 @@ $('#saveVisitor').click(function(){
                    emailVisitor : emailVisitor,
                    addressVisitor : addressVisitor,
                    phoneVisitor :  phoneVisitor,
+                   companyVisitor :  companyVisitor,
                    place_id : place_id,
                    comments : comments,
                    visitor_id : visitor_id,

@@ -30,6 +30,7 @@ class VisitorRequest extends FormRequest
             'emailVisitor'  => 'required',
             'phoneVisitor'  => 'required',
             'addressVisitor'  => 'required',
+            'companyVisitor'  => 'required|string|min:6|max:9',
         ];
     }
 }

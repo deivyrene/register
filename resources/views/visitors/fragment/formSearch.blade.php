@@ -26,29 +26,32 @@
                         <label for="surnameVisitor">Apellidos</label>
                         <input type="text" name="surnameVisitor" id="surnameVisitor" class="form-control">
                 </div>
-        </div>
-        <div class="row">
                 <div class="col-sm form-group">
                         <label for="rutVisitor">Rut</label>
                         <input type="text" name="rutVisitor" id="rutVisitorForm" class="form-control">
                 </div>
+        </div>
+        <div class="row">
                 <div class="col-sm form-group">
                         <label for="emailVisitor">Email</label>
                         <input type="text" name="emailVisitor" id="emailVisitor" class="form-control">
                 </div>
-        </div>
-        <div class="row">
                 <div class="col-sm form-group">
-                        <label for="addressVisitor">Direccion</label>
+                        <label for="addressVisitor">Dirección</label>
                         <input type="text" name="addressVisitor" id="addressVisitor" class="form-control">
                 </div>
+                
                 <div class="col-sm form-group">
-                        <label for="phoneVisitor">Telefono</label>
+                        <label for="phoneVisitor">Fono</label>
                         <input type="text" name="phoneVisitor" id="phoneVisitor" class="form-control">
+                </div>   
+                           
+                <div class="col-sm form-group">
+                        <label for="place_id">Empresa</label>
+                        <input type="text" name="companyVisitor" id="companyVisitor" class="form-control">
                 </div>
         </div>
-
-        <div class="row">
+        <div class="row">  
                 <div class="col-sm form-group">
                         <label for="place_id">Oficina</label>
                         <select class="form-control" name="place_id" id="place_id">

@@ -75,7 +75,10 @@ class UserController extends Controller
         $edifice = Edifice::all(['id', 'nameEdifice']);
         $user = User::find($id);
 
-        return view('users.edit', compact('user', 'role', 'edifice'));
+        $userRole = $user->roles[0]->id;
+        $userEdifice = $user->edifices[0]->id;
+
+        return view('users.edit', compact('user', 'role', 'edifice', 'userRole', 'userEdifice'));
     }
 
     

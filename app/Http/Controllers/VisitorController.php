@@ -37,18 +37,23 @@ class VisitorController extends Controller
             
             $visitor = \DB::table('visitors')->join('place_visitors', 'place_visitors.visitor_id', '=', 'visitors.id' )
                                              ->join('places', 'places.id', '=', 'place_visitors.place_id')
-                                             ->groupBy('emailVisitor');
+                                             ->select('visitors.*', 'place_visitors.comments', 'places.edifice_id')
+                                             ->groupBy('visitors.emailVisitor');
+
         }else{
 
             $edifice_id = $request->user()->hasEdifice();
 
-            $visitor = \DB::table('visitors')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
-                                           ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
-                                           ->where('edifice_id', $edifice_id);
+            $visitor = \DB::table('visitors')->join('place_visitors', 'place_visitors.visitor_id', '=', 'visitors.id' )
+                                             ->join('places', 'places.id', '=', 'place_visitors.place_id')
+                                             ->select('visitors.*', 'place_visitors.comments', 'places.edifice_id')
+                                             ->groupBy('visitors.emailVisitor')
+                                             ->where('edifice_id', $edifice_id);
+                                           
         } 
 
          return Datatables::of($visitor)->addColumn('action', function ($user) {
-             return '<a href="#" onclick="outVisitor('.$user->id.')" class="btn btn-sm btn-success"><i class="material-icons">swap_horiz</i></a>';
+             return '<a href="http://localhost:8000/visitors/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>';
          })->make(true);
     }
  
@@ -101,7 +106,7 @@ class VisitorController extends Controller
 
          $visitor->save();
  
-         return redirect()->route('visitors.index')->with('info','El visitante ha sido editado');
+         return redirect('visitorsList')->with('info','El visitante ha sido editado');
      }
      
      public function show($id)
