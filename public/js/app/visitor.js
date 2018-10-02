@@ -127,40 +127,63 @@ function destroyVisitor(id){
     });
   }
 
+$("#backRun").click(function(){
+
+    location.reload();
+
+});
+
 //Buscar un registro de visitante
 $('#searchRun').click(function(){
 
      var route = "http://localhost:8000/getvisitor";
      var rutVisitor = $('#rutVisitor').val();
      
-     $.ajax({
-         type: 'get',
-         url:  route,
-         data: {
-                    rutVisitor : rutVisitor
-               }
-     }).done(function(data){
-            //console.log(data[0]);
-            if(data[0]){
-                $('#searchVisitor').hide("slow");
-                $('#registerVisitor').show("slow");
 
-                $('#visitor_id').val(data[0].id);
-                $('#nameVisitor').val(data[0].nameVisitor);
-                $('#surnameVisitor').val(data[0].surnameVisitor);
-                $('#rutVisitorForm').val(data[0].rutVisitor);
-                $('#emailVisitor').val(data[0].emailVisitor);
-                $('#addressVisitor').val(data[0].addressVisitor);
-                $('#phoneVisitor').val(data[0].phoneVisitor);
-                $('#flag').val("1");
-            }
-            else{
-                $('#searchVisitor').hide("slow");
-                $('#registerVisitor').show("slow");
-                $('#rutVisitorForm').val(rutVisitor);
-                $('#flag').val("0");
-            }   
-     });
+    if(rutVisitor.length == 0){
+        alert('Ingrese Run');
+        return false;
+    }
+    else{
+
+        $.ajax({
+            type: 'get',
+            url:  route,
+            data: {
+                        rutVisitor : rutVisitor
+                }
+        }).done(function(data){
+                //console.log(data[0]);
+                if(data[0]){
+                    $('#buscarRun').modal('toggle');
+                    $('#visitorsList').hide("slow");
+                    $('#registerVisitor').show("slow");
+
+                    $('#visitor_id').val(data[0].id);
+                    $('#nameVisitor').val(data[0].nameVisitor).prop('disabled', true);
+                    $('#surnameVisitor').val(data[0].surnameVisitor).prop('disabled', true);
+                    $('#rutVisitorForm').val(data[0].rutVisitor).prop('disabled', true);
+                    $('#emailVisitor').val(data[0].emailVisitor).prop('disabled', true);
+                    $('#addressVisitor').val(data[0].addressVisitor).prop('disabled', true);
+                    $('#phoneVisitor').val(data[0].phoneVisitor).prop('disabled', true);
+                    $('#companyVisitor').val(data[0].companyVisitor).prop('disabled', true);
+                    $('#flag').val("1");
+                }
+                else{
+                    $('#buscarRun').modal('toggle');
+                    $('#visitorsList').hide("slow");
+                    $('#registerVisitor').show("slow");
+                    $('#rutVisitorForm').val(rutVisitor);
+                    $('#nameVisitor').val("");
+                    $('#surnameVisitor').val("");
+                    $('#emailVisitor').val("");
+                    $('#addressVisitor').val("");
+                    $('#phoneVisitor').val("");
+                    $('#companyVisitor').val("");
+                    $('#flag').val("0");
+                }   
+        });
+    }
  
  });
 

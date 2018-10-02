@@ -286,11 +286,11 @@
     <footer class="page-footer bg-dark text-white">
 
         <!-- Copyright -->
-        <div class="footer-copyright text-center py-3"><img class="logo" src="landing/img/footer-logo.png" alt="Asesorias Computacionales Sipcom Limitada">
-        </div>
+        <div class="footer-copyright text-center py-3"><img class="logo" src="landing/img/footer-logo.png" alt="Asesorias Computacionales Sipcom Limitada"></div>
         <!-- Copyright -->
-      
+    
     </footer>
     <!-- Footer -->
+
 
 @endsection

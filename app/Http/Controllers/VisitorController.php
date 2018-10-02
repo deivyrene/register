@@ -6,6 +6,7 @@ use Siac\Visitor;
 use Siac\PlaceVisitor;
 use Siac\User;
 use Siac\Http\Requests\VisitorRequest;
+use Carbon\Carbon;
 
 use Yajra\Datatables\Datatables;
 use Yajra\DataTables\Services\DataTable;
@@ -70,17 +71,26 @@ class VisitorController extends Controller
 
             $visitor = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
                                            ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
-                                           ->where('edifice_id', $edifice_id);
+                                           ->where('edifice_id', $edifice_id)->whereDate('arrivalTime', Carbon::now()->format('Y-m-d'));
+            
         } 
 
          return Datatables::of($visitor)->addColumn('action', function ($user) {
-             return '<a href="#" onclick="outVisitor('.$user->id.')" class="btn btn-sm btn-success"><i class="material-icons">swap_horiz</i></a>';
+             return '<a href="#" title="Marcar salida" onclick="outVisitor('.$user->id.')" class="btn btn-sm btn-success"><i class="far fa-clock"></i>';
          })->make(true);
     }
  
      public function create()
      {
-        $places = Place::all();
+        $role = $request->user()->typeRole();
+        if($role == "admin"){
+            $places = Place::all();
+        }
+        else{
+            $edifice_id = $request->user()->hasEdifice();
+            $places = Place::where('edifice_id','=',$edifice_id)->get();
+        }
+        
 
         return view('visitors.search', compact('places'));
      }

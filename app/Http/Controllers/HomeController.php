@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Siac\Edifice;
 use Siac\Visitor;
+use Siac\Place;
 
 class HomeController extends Controller
 {
@@ -40,9 +41,12 @@ class HomeController extends Controller
         {
             return view('index', compact('countEdifice', 'countVisitor', 'countVisitants'));
         }
-        else
+        if($tipo == "user")
         {
-            return view('landing');
+            $edifice_id = $request->user()->hasEdifice();
+            $places = Place::where('edifice_id','=',$edifice_id)->get();
+            
+            return view('condominium.index', compact('places'));
         }
 
         

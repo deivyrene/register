@@ -30,6 +30,14 @@
     <link rel="stylesheet" href="{{{ URL::asset('css/animate.css') }}}">
 
     <link rel="stylesheet" href="{{{ URL::asset('landing/css/init.css') }}}">
+
+    <link rel="stylesheet" href="{{{ URL::asset('css/font-awesome.min.css') }}}" />
+
+    <!--     DataTables     -->
+    <!-- Latest compiled and minified CSS -->
+    <link href="{{{ URL::asset('css/datatables.bootstrap.css') }}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{{ URL::asset('css/buttons.dataTables.min.css') }}}">
+
 </head>
 <body>
     <div id="page-top">
@@ -43,23 +51,29 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="#about">Nosotros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="#services">Servicios</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="#portfolio">Clientes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger" href="#contact">Contáctanos</a>
-                            </li>
                             @if(Auth::guest())
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="#about">Nosotros</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="#services">Servicios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="#portfolio">Clientes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="#contact">Contáctanos</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#exampleModal">Ingresar</a>
                                 </li>
                             @else
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarRun">Buscar Run</a>
+                                </li>
+                                <li class="nav-item">
+                                        <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarFecha">Rango de Fecha</a>
+                                    </li>
                                 <li class="nav-item">
                                     <a class="nav-link js-scroll-trigger" title="Clic para cerrar" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
@@ -82,6 +96,8 @@
                     @yield('content')
                 </div>
             </div>
+
+            
     </div>
 
 
@@ -107,7 +123,20 @@
         new WOW().init();
     </script>
 
+    <!-- Datatables -->
+    <script src="{{{ URL::asset('js/jquery.dataTables.min.js') }}}"></script>
+
+    <script src="{{{ URL::asset('js/plugins/dataTables/dataTables.buttons.min.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/dataTables/buttons.flash.min.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/dataTables/jszip.min.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/dataTables/pdfmake.min.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/dataTables/vfs_fonts.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/dataTables/buttons.html5.min.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/dataTables/buttons.print.min.js') }}}"></script>
+
     <script src="{{{ URL::asset('landing/js/init.js') }}}"></script>
+
+    <script src="{{{ URL::asset('js/app/visitor.js') }}}"></script>
 
 </body>
 </html>
