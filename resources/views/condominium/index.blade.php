@@ -6,6 +6,7 @@
         <div class="container my-auto">
             <div class="row" >
                     @extends('condominium.fragment.searchRun')
+                    @extends('condominium.fragment.searchData')
                         <div id="registerVisitor" style="display: none; background:#FFFFFF; margin-top:100px; border: 2px solid #fb6816; padding: 20px; border-radius: 15px;">
                             <br><br>
                                 <h4 style="color:black">
@@ -21,7 +22,7 @@
                                                 <input type="text" name="surnameVisitor" id="surnameVisitor" placeholder="Apellidos" class="form-control">
                                         </div>
                                         <div class="col-sm form-group">
-                                                <input type="text" name="rutVisitor" id="rutVisitorForm" placeholder="Run" class="form-control">
+                                                <input type="text" name="rutVisitor" id="rutVisitorForm" placeholder="Run" maxlength="9"  class="form-control">
                                         </div>
                                 </div>
                                 <div class="row">
@@ -73,7 +74,7 @@
                 <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" ">
                     <div class="card-header card-header-primary" style="background:#007bff">
                         <h4 class="card-title ">
-                                Visitas Recientes al {{ Carbon\Carbon::now()}}
+                                Visitas Recientes al {{ Carbon\Carbon::now()->format('d/m/Y')}}
                         </h4>
                     </div>
                     <table id="visitor"  class="table table-hover table-striped table-dark" >
@@ -84,8 +85,8 @@
                                         <th>Empresa</th>
                                         <th>N°</th>
                                         <th>Oficina</th>
+                                        <th>Motivo</th>
                                         <th>Entrada</th>
-                                        <th>Salida</th>
                                         <th>Acción</th>
                                 </tr>
                         </thead>

@@ -13,8 +13,8 @@ var Visitor = function(table){
             {data: 'companyVisitor', name: 'companyVisitor'},
             {data: 'numberPlace', name: 'numberPlace'},
             {data: 'namePlace', name: 'namePlace'},
+            {data: 'comments', name: 'comments'},
             {data: 'arrivalTime', name: 'arrivalTime'},
-            {data: 'departureTime', name: 'departureTime'},
             {data: 'action', name: 'action'}
         ],
         dom: 'Bfrtip',

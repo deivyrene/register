@@ -10,7 +10,7 @@
                         <div class="modal-body">
                         <div id="searchVisitor" class="col-lg-6 mx-auto">
                                 <div class="input-group">
-                                        <input type="text" name="rutVisitor" id="rutVisitor" class="form-control" placeholder="Run Visitante" >
+                                        <input type="text" name="rutVisitor" id="rutVisitor" style="text-transform:uppercase" maxlength="9" class="form-control" placeholder="Run" >
                                         <div class="input-group-append">
                                           
                                           <button class="input-group-text" id="searchRun" type="button">Buscar</button>
