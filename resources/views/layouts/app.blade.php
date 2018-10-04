@@ -17,8 +17,8 @@
 
     <!-- Custom fonts for this template -->
     <link rel="stylesheet" href="{{{ URL::asset('landing/css/all.min.css') }}}">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,500,500i,700,700i' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,500,500i,700,700i' rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="{{{ URL::asset('landing/css/magnific-popup.css') }}}">
@@ -69,7 +69,7 @@
                                 </li>
                             @else
                                 <li class="nav-item">
-                                    <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarRun">Buscar Run</a>
+                                    <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarRun">Ingresar Visita</a>
                                 </li>
                                 <li class="nav-item">
                                         <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarFecha">Rango de Fecha</a>

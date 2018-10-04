@@ -25,9 +25,8 @@
                                         <th>Empresa</th>
                                         <th>N°</th>
                                         <th>Oficina</th>
+                                        <th>Motivo</th>
                                         <th>Entrada</th>
-                                        <th>Salida</th>
-                                        <th>Acción</th>
                                     </tr>
                             </thead>
                             

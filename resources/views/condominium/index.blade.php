@@ -7,6 +7,7 @@
             <div class="row" >
                     @extends('condominium.fragment.searchRun')
                     @extends('condominium.fragment.searchData')
+                    <div class="col-md">
                         <div id="registerVisitor" style="display: none; background:#FFFFFF; margin-top:100px; border: 2px solid #fb6816; padding: 20px; border-radius: 15px;">
                             <br><br>
                                 <h4 style="color:black">
@@ -68,31 +69,55 @@
                                         <div class="col-sm-4"></div>
                                 </div><br>
                         </div> 
+
+                    </div>
                         
             </div>
-            <div class="row" style="margin-top: 100px; ">
-                <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" ">
-                    <div class="card-header card-header-primary" style="background:#007bff">
-                        <h4 class="card-title ">
-                                Visitas Recientes al {{ Carbon\Carbon::now()->format('d/m/Y')}}
-                        </h4>
+                    <div class="row" style="margin-top: 100px;" id="tableFirst">
+                        <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" >
+                            <div class="card-header card-header-primary" style="background:#007bff">
+                                <h4 class="card-title ">
+                                        Visitas Recientes al {{ Carbon\Carbon::now()->format('d/m/Y')}}
+                                </h4>
+                            </div>
+                            <table id="visitor"  class="table table-hover table-striped table-dark" >
+                                <thead class="thead-dark text-default">
+                                        <tr>
+                                                <th>Nombre</th>
+                                                <th>Apellido</th>
+                                                <th>Empresa</th>
+                                                <th>N°</th>
+                                                <th>Oficina</th>
+                                                <th>Motivo</th>
+                                                <th>Entrada</th>
+                                        </tr>
+                                </thead>
+                            </table>
+                        </div>
                     </div>
-                    <table id="visitor"  class="table table-hover table-striped table-dark" >
-                        <thead class="thead-dark text-default">
-                                <tr>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Empresa</th>
-                                        <th>N°</th>
-                                        <th>Oficina</th>
-                                        <th>Motivo</th>
-                                        <th>Entrada</th>
-                                        <th>Acción</th>
-                                </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
+
+                    <div class="row" style="margin-top: 100px; display: none" id="tableRange">
+                            <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" >
+                                <div class="card-header card-header-primary" style="background:#007bff">
+                                    <h4 class="card-title ">
+                                            Consulta de visitas
+                                    </h4>
+                                </div>
+                                <table id="visitorRange"  class="table table-hover table-striped table-dark" >
+                                    <thead class="thead-dark text-default">
+                                            <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Apellido</th>
+                                                    <th>Empresa</th>
+                                                    <th>N°</th>
+                                                    <th>Oficina</th>
+                                                    <th>Motivo</th>
+                                                    <th>Entrada</th>
+                                            </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                    </div>
         </div>
       </header>
   

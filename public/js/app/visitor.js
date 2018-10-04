@@ -15,7 +15,6 @@ var Visitor = function(table){
             {data: 'namePlace', name: 'namePlace'},
             {data: 'comments', name: 'comments'},
             {data: 'arrivalTime', name: 'arrivalTime'},
-            {data: 'action', name: 'action'}
         ],
         dom: 'Bfrtip',
         buttons: [
@@ -156,7 +155,8 @@ $('#searchRun').click(function(){
                 //console.log(data[0]);
                 if(data[0]){
                     $('#buscarRun').modal('toggle');
-                    $('#visitorsList').hide("slow");
+                    $('#tableFirst').hide("slow");
+                    $('#tableRange').hide("slow");
                     $('#registerVisitor').show("slow");
 
                     $('#visitor_id').val(data[0].id);
@@ -171,7 +171,8 @@ $('#searchRun').click(function(){
                 }
                 else{
                     $('#buscarRun').modal('toggle');
-                    $('#visitorsList').hide("slow");
+                    $('#tableFirst').hide("slow");
+                    $('#tableRange').hide("slow");
                     $('#registerVisitor').show("slow");
                     $('#rutVisitorForm').val(rutVisitor);
                     $('#nameVisitor').val("");
@@ -224,6 +225,80 @@ $('#saveVisitor').click(function(){
             alert('Se ha registrado exitosamente');
             location.reload();
     });
+
+});
+
+ //Buscar registros por rango de fecha
+ $('#searchDateRange').click(function(){
+
+    var route = "/visitor";
+    var dateIn = $('#dateIn').val();
+    var dateOf = $('#dateOf').val();
+    var flag = "dateRange";
+
+    if(dateIn.length != 0 && dateOf.length != 0)
+    {
+
+        $('#buscarFecha').modal('toggle');
+        $('#tableFirst').hide("slow");
+        $('#tableRange').show("slow");
+
+        $('#visitorRange').DataTable({
+            "language": {"url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"},
+            paging: true,
+            searching: true,
+            destroy: true,
+            "ajax": {
+                        "url": route,
+                        "data": {
+                                dateIn : dateIn,
+                                dateOf : dateOf,
+                                flag : flag,
+                        }
+                    },
+            "columns": [
+                {data: 'nameVisitor', name: 'nameVisitor'},
+                {data: 'surnameVisitor', name: 'surnameVisitor'},
+                {data: 'companyVisitor', name: 'companyVisitor'},
+                {data: 'numberPlace', name: 'numberPlace'},
+                {data: 'namePlace', name: 'namePlace'},
+                {data: 'comments', name: 'comments'},
+                {data: 'arrivalTime', name: 'arrivalTime'},
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                {   
+                    extend:"copy",
+                    className:"btn-sm",
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4]
+                    },
+                },
+                {   
+                    extend:"excel",
+                    className:"btn-sm",
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4]
+                    },
+                },
+                {   
+                    extend:"pdfHtml5",
+                    className:"btn-sm",
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4]
+                    },
+                },
+                {   
+                    extend:"print",
+                    className:"btn-sm",
+                    exportOptions: {
+                        columns: [ 0, 1, 2, 3, 4]
+                    },
+                },
+            ],
+            pageLength: 5,
+        });
+    }
 
 });
 

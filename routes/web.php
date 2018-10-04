@@ -17,6 +17,9 @@
     Route::get('/', function(){
         return view('landing');
     });
+    Route::get('/login', function(){
+        return view('landing');
+    });
     //Route para autenticacion
     Auth::routes();
     Route::get('/home', 'HomeController@index')->name('home');

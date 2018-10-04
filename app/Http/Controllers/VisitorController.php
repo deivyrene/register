@@ -69,9 +69,21 @@ class VisitorController extends Controller
         }else{
             $edifice_id = $request->user()->hasEdifice();
 
+            if($request->flag == "dateRange"){
+
+                $visitor = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
+                                 ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
+                                 ->where('edifice_id', $edifice_id)->whereBetween('arrivalTime', [$request->dateIn, $request->dateOf]);
+                
+
+            }else{
+                
             $visitor = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
-                                           ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
-                                           ->where('edifice_id', $edifice_id)->whereDate('arrivalTime', Carbon::now()->format('Y-m-d'));
+                                 ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
+                                 ->where('edifice_id', $edifice_id)->whereDate('arrivalTime', Carbon::now()->format('Y-m-d'));
+
+            }
+
             
         } 
 
