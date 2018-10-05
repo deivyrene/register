@@ -16,6 +16,10 @@
                                           <button class="input-group-text" id="searchRun" type="button">Buscar</button>
                                         </div>
                                 </div>
+
+                                <div class="row">
+                                        <div class="">Visitas Recientes</div>
+                                </div>
                         </div> 
                         </div>
                 </div>

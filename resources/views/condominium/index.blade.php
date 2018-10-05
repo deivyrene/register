@@ -2,11 +2,13 @@
 
 @section('content')
 
+@extends('condominium.fragment.searchRun')
+@extends('condominium.fragment.searchData')
+
 <header class="masthead text-center text-white d-flex">
         <div class="container my-auto">
             <div class="row" >
-                    @extends('condominium.fragment.searchRun')
-                    @extends('condominium.fragment.searchData')
+                   
                     <div class="col-md">
                         <div id="registerVisitor" style="display: none; background:#FFFFFF; margin-top:100px; border: 2px solid #fb6816; padding: 20px; border-radius: 15px;">
                             <br><br>
@@ -73,10 +75,11 @@
                     </div>
                         
             </div>
+                    
                     <div class="row" style="margin-top: 100px;" id="tableFirst">
                         <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" >
-                            <div class="card-header card-header-primary" style="background:#007bff">
-                                <h4 class="card-title ">
+                            <div class="card-header card-header-primary" style="background:#e2e2e2; color:black">
+                                <h4 class="card-title">
                                         Visitas Recientes al {{ Carbon\Carbon::now()->format('d/m/Y')}}
                                 </h4>
                             </div>
@@ -98,7 +101,7 @@
 
                     <div class="row" style="margin-top: 100px; display: none" id="tableRange">
                             <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" >
-                                <div class="card-header card-header-primary" style="background:#007bff">
+                                <div class="card-header card-header-primary" style="background:#e2e2e2; color:black">
                                     <h4 class="card-title ">
                                             Consulta de visitas
                                     </h4>

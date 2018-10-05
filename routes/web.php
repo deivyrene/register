@@ -26,7 +26,7 @@
 
 Route::group(['middleware' => ['auth']], function () {
 
-    //Route generales con sus funciones básicas
+    //Route generales con traer vistas y Rest principales
    
     Route::resource('edifices', 'EdificeController');
     Route::resource('roles', 'RoleController');
@@ -35,6 +35,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('visitors', 'VisitorController');
 
     Route::get('visitorsList', 'VisitorController@visitorList');
+
+    Route::get('grafic', 'VisitorController@getGrafic');
     
     //Route para traer datos en datatables
     

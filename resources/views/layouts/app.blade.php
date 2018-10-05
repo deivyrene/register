@@ -38,6 +38,7 @@
     <link href="{{{ URL::asset('css/datatables.bootstrap.css') }}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="{{{ URL::asset('css/buttons.dataTables.min.css') }}}">
 
+    
 </head>
 <body>
     <div id="page-top">
@@ -72,8 +73,8 @@
                                     <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarRun">Ingresar Visita</a>
                                 </li>
                                 <li class="nav-item">
-                                        <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarFecha">Rango de Fecha</a>
-                                    </li>
+                                    <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarFecha">Rango de Fecha</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link js-scroll-trigger" title="Clic para cerrar" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

@@ -92,8 +92,8 @@ class VisitorController extends Controller
          })->make(true);
     }
  
-     public function create()
-     {
+    public function create()
+    {
         $role = $request->user()->typeRole();
         if($role == "admin"){
             $places = Place::all();
@@ -107,15 +107,16 @@ class VisitorController extends Controller
         return view('visitors.search', compact('places'));
      }
 
-     public function edit($id)
-     {
+    public function edit($id)
+    {
          $visitor = Visitor::find($id);
  
          return view('visitors.edit', compact('visitor'));
  
-     }
-     public function update(VisitorRequest $request, $id)
-     {
+    }
+    
+    public function update(VisitorRequest $request, $id)
+    {
          $visitor = Visitor::find($id);
  
          $visitor->nameVisitor     = $request->nameVisitor;
@@ -129,14 +130,14 @@ class VisitorController extends Controller
          $visitor->save();
  
          return redirect('visitorsList')->with('info','El visitante ha sido editado');
-     }
+    }
      
-     public function show($id)
-     {
+    public function show($id)
+    {
          $visitor = Visitor::find($id);
  
          return view('visitors.show', compact('visitor'));
-     }
+    }
 
     //Obtener un visitante si esta registrado, sino esta envia resultado null
     public function getSearchVisitor(request $request){
@@ -201,8 +202,8 @@ class VisitorController extends Controller
     }
 
     //Actualizar fecha de salida visitante
-    public function outVisitor(request $request)
-     {
+    public function outVisitor(Request $request)
+    {
          if($request->ajax()){
  
              $visitor = PlaceVisitor::find($request->id);
@@ -211,5 +212,13 @@ class VisitorController extends Controller
              
              return "Se ha actualizado correctamente";
          }
-     }
+    }
+
+
+    public function getGrafic(Request $request){
+
+        $request->user()->authorizeRoles(['user','admin']);
+
+        return view('condominium.grafic');
+    }
 }
