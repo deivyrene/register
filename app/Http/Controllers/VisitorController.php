@@ -214,11 +214,4 @@ class VisitorController extends Controller
          }
     }
 
-
-    public function getGrafic(Request $request){
-
-        $request->user()->authorizeRoles(['user','admin']);
-
-        return view('condominium.grafic');
-    }
 }

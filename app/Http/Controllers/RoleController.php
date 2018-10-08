@@ -23,7 +23,7 @@ class RoleController extends Controller
   
          return Datatables::of($roles)->addColumn('action', function ($user) {
              return '<a href="http://localhost:8000/roles/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>
-                     <a href="#" onclick="destroyRole('.$user->id.')" class="btn btn-sm btn-warning"><i class="material-icons">delete_forever</i></a>';
+                     ';
          })->make(true);
      }
  

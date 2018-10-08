@@ -157,6 +157,7 @@ $('#searchRun').click(function(){
                     $('#buscarRun').modal('toggle');
                     $('#tableFirst').hide("slow");
                     $('#tableRange').hide("slow");
+                    $('#tablePlaces').hide("slow");
                     $('#registerVisitor').show("slow");
 
                     $('#visitor_id').val(data[0].id);
@@ -173,7 +174,9 @@ $('#searchRun').click(function(){
                     $('#buscarRun').modal('toggle');
                     $('#tableFirst').hide("slow");
                     $('#tableRange').hide("slow");
+                    $('#tablePlaces').hide("slow");
                     $('#registerVisitor').show("slow");
+
                     $('#rutVisitorForm').val(rutVisitor);
                     $('#nameVisitor').val("");
                     $('#surnameVisitor').val("");
@@ -241,6 +244,7 @@ $('#saveVisitor').click(function(){
 
         $('#buscarFecha').modal('toggle');
         $('#tableFirst').hide("slow");
+        $('#tablePlaces').hide("slow");
         $('#tableRange').show("slow");
 
         $('#visitorRange').DataTable({

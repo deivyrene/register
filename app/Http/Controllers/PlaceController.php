@@ -16,7 +16,7 @@ class PlaceController extends Controller
 {
     public function index(Request $request){
         
-        $request->user()->authorizeRoles(['user','admin']);
+        $request->user()->authorizeRoles(['admin']);
         
         return view('places.index');
     }
@@ -29,6 +29,10 @@ class PlaceController extends Controller
                 $places = Place::with(['edifices' => function($query){
                     $query->select('id','nameEdifice');
                 }])->orderBy('id', 'asc');
+
+                return Datatables::of($places)->addColumn('action', function ($user) {
+                    return '<a href="http://localhost:8000/places/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>';
+                })->make(true);
         }
         else{
         
@@ -37,12 +41,12 @@ class PlaceController extends Controller
                 $places = Place::with(['edifices' => function($query) {
                     $query->select('id','nameEdifice');
                 }])->where('edifice_id', $edifice_id)->orderBy('id', 'asc');
+
+                return Datatables::of($places)->addColumn('action', function ($user) {
+                    return '<a href="http://localhost:8000/places/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>';
+                })->make(true);
         }
 
-        return Datatables::of($places)->addColumn('action', function ($user) {
-            return '<a href="http://localhost:8000/places/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>
-                    <a href="#" onclick="destroyPlace('.$user->id.')" class="btn btn-sm btn-warning"><i class="material-icons">delete_forever</i></a>';
-        })->make(true);
     }
 
     public function create(Request $request){
@@ -56,7 +60,7 @@ class PlaceController extends Controller
         }
 
         if(isset($edifice_id)){
-            $edifices = Edifice::all();
+            $edifices = Edifice::where('statusEdifice', '1')->get();
         }
         else{
             $edifices = Edifice::all(['id', 'nameEdifice'])->where('id', $edifice_id)->first();
@@ -113,8 +117,8 @@ class PlaceController extends Controller
         if($request->ajax())
         {
             $place = Place::find($request->id);
-
-            $place->delete();
+            $place->statusPlace = 0;
+            $place->save();
 
             return 'Se ha eliminado satisfactoriamente';
         }

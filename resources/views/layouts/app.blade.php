@@ -76,7 +76,7 @@
                                     <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarFecha">Rango de Fecha</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link js-scroll-trigger" href="{{ url('visitors') }}" >Oficinas</a>
+                                    <a class="nav-link js-scroll-trigger" href="#" id="listPlace" >Oficinas</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link js-scroll-trigger" title="Clic para cerrar" href="{{ route('logout') }}"
@@ -141,6 +141,6 @@
     <script src="{{{ URL::asset('landing/js/init.js') }}}"></script>
 
     <script src="{{{ URL::asset('js/app/visitor.js') }}}"></script>
-
+    <script src="{{{ URL::asset('js/app/place.js') }}}"></script>
 </body>
 </html>

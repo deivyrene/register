@@ -35,8 +35,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('visitors', 'VisitorController');
 
     Route::get('visitorsList', 'VisitorController@visitorList');
-
-    Route::get('grafic', 'VisitorController@getGrafic');
     
     //Route para traer datos en datatables
     

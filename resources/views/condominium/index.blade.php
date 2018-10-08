@@ -121,6 +121,31 @@
                                 </table>
                             </div>
                     </div>
+
+                    <div class="row" style="margin-top: 100px; display: none" id="tablePlaces">
+                            <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" >
+                                <div class="card-header card-header-primary" style="background:#e2e2e2; color:black">
+                                    <h4 class="card-title ">
+                                            Listado de Oficinas 
+                                            <a href="{{ route('places.create') }}" class="btn btn-sm btn-danger pull-right">Nuevo</a>
+                                            <a href="{{ url('import/get') }}" class="btn btn-sm btn-primary pull-right">Importar</a>
+                                    </h4>
+                                </div>
+                                <table id="place"  class="table table-hover table-striped table-dark" >
+                                    <thead class="thead-dark text-default">
+                                            <tr>
+                                                        <th width="20px">Oficina</th>
+                                                        <th>Empresa</th>
+                                                        <th>Contacto</th>
+                                                        <th>Phono</th>
+                                                        <th>Email</th>
+                                                        <th>Edificio</th>
+                                                        <th>Acción</th>
+                                            </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                    </div>
         </div>
       </header>
   

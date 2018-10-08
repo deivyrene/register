@@ -20,11 +20,11 @@ class EdificeController extends Controller
 
     public function getEdifice()
     {
-        $edifices = Edifice::orderBy('id','DESC');
+        $edifices = Edifice::where('statusEdifice', '1')->orderBy('id','DESC');
  
         return Datatables::of($edifices)->addColumn('action', function ($user) {
             return '<a href="http://localhost:8000/edifices/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>
-                    <a href="#" onclick="destroyEdifice('.$user->id.')" class="btn btn-sm btn-warning"><i class="material-icons">delete_forever</i></a>';
+                    ';
         })->make(true);
     }
 
@@ -74,7 +74,8 @@ class EdificeController extends Controller
         if($request->ajax()){
 
             $edifice = Edifice::find($request->id);
-            $edifice->delete();
+            $edifice->statusEdifice = 0;
+            $edifice->save();
 
             return 'El edificio ha sido eliminado';
         }

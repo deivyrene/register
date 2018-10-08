@@ -52,6 +52,15 @@ var Place = function(table){
 
 };
 
+$('#listPlace').click(function(){
+    
+    $('#tableFirst').hide("slow");
+    $('#tableRange').hide("slow");
+    $('#registerVisitor').hide("slow");
+    $('#tablePlaces').show("slow");
+
+});
+
 function destroyPlace(id){
     $.ajax({
         url: '/destroyplace',
