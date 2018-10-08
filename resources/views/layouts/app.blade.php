@@ -76,6 +76,9 @@
                                     <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarFecha">Rango de Fecha</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="{{ url('visitors') }}" >Oficinas</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link js-scroll-trigger" title="Clic para cerrar" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">

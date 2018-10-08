@@ -7,7 +7,7 @@
             <div class="card-header card-header-primary" style="background: #383131">
                 <h4>
                     Editar Usuario de Sistema
-                    <a href="{{ route('users.index') }}" class="btn tb-sm btn-info pull-right">Listar</a>
+                    <a href="{{ route('users.index') }}" class="btn btn-sm btn-info pull-right">Listar</a>
                 </h4>
             </div>
             <div class="card-body">

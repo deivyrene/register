@@ -27,7 +27,11 @@ class UserController extends Controller
     public function getUserSystem()
     {
         
-        $users = User::OrderBy('created_at', 'desc');
+        //$users = User::OrderBy('created_at', 'desc');
+
+        $users = \DB::table('users')->join('role_user', 'role_user.user_id', '=', 'users.id' )
+                                             ->join('roles', 'roles.id', '=', 'role_user.role_id')
+                                             ->select('users.*', 'roles.nameRole');
  
         return Datatables::of($users)->addColumn('action', function ($user) {
             return '<a href="http://localhost:8000/users/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>
@@ -64,21 +68,39 @@ class UserController extends Controller
         $user->save();
 
         $user->roles()->attach($role);
-        $user->edifices()->attach($edifice);
+
+        if($request->edifice_id != "admin"){
+            $user->edifices()->attach($edifice);
+        }
+       
 
         return redirect()->route('users.index')->with('info', 'El usuario se ha registrado');
     }
     
     public function edit($id)
     {
-        $role = Role::all(['id', 'nameRole']);
-        $edifice = Edifice::all(['id', 'nameEdifice']);
-        $user = User::find($id);
+            $user = User::find($id);
+            $userRole = $user->roles[0]->id;
+            $nameRole = $user->roles[0]->nameRole;
+        
+            if($nameRole == "user"){
+                
+                $userEdifice = $user->edifices[0]->id;
+                $role = Role::all(['id', 'nameRole']);
+                $edifice = Edifice::all(['id', 'nameEdifice']);
 
-        $userRole = $user->roles[0]->id;
-        $userEdifice = $user->edifices[0]->id;
+                return view('users.edit', compact('user', 'role', 'edifice', 'userRole', 'userEdifice'));
+            }
+            if($nameRole == "admin"){
 
-        return view('users.edit', compact('user', 'role', 'edifice', 'userRole', 'userEdifice'));
+                $userEdifice = "admin";
+                $role = Role::all(['id', 'nameRole']);
+                $edifice = Edifice::all(['id', 'nameEdifice']);
+
+                return view('users.edit', compact('user', 'role', 'edifice', 'userRole', 'userEdifice'));
+            }
+
+ 
     }
 
     

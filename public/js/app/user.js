@@ -11,6 +11,7 @@ var UserSystem = function(table){
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'email', name: 'email'},
+            {data: 'nameRole', name: 'nameRole'},
             {data: 'action', name: 'action'}
         ],
         dom: 'Bfrtip',

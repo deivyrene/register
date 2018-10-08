@@ -21,6 +21,7 @@
                                     <th width="20px">ID</th>
                                     <th>Nombre Usuario</th>
                                     <th>Correo</th>
+                                    <th>Rol Usuario</th>
                                     <th>Acción</th>
                                 </tr>
                         </thead>
