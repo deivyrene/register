@@ -21,6 +21,7 @@ class CreatePlacesTable extends Migration
             $table->string('phonePlace', 100);
             $table->string('ownerPlace', 100);
             $table->string('mailPlace', 100);
+            $table->integer('statusPlace');
             
             $table->integer('edifice_id')->unsigned();
             $table->foreign('edifice_id')->references('id')->on('edifices')->onDelete('cascade');

@@ -13,7 +13,7 @@ class CreateRoleUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('role_users', function (Blueprint $table) {
+      /*  Schema::create('role_users', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('role_id')->unsigned();
@@ -22,7 +22,7 @@ class CreateRoleUsersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
-        });
+        });*/
     }
 
     /**

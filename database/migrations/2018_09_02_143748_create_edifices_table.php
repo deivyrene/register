@@ -20,6 +20,7 @@ class CreateEdificesTable extends Migration
             $table->string('addressEdifice', 100);
             $table->string('contactEdifice', 100);
             $table->string('emailEdifice', 100);
+            $table->integer('statusEdifice');
             
             $table->timestamps();
         });

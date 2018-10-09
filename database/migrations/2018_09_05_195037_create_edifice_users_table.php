@@ -13,7 +13,7 @@ class CreateEdificeUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('edifice_users', function (Blueprint $table) {
+      /*  Schema::create('edifice_users', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('edifice_id')->unsigned();
@@ -22,7 +22,7 @@ class CreateEdificeUsersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
