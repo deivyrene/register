@@ -78,17 +78,30 @@
                                 <li class="nav-item">
                                     <a class="nav-link js-scroll-trigger" href="#" id="listPlace" >Oficinas</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link js-scroll-trigger" title="Clic para cerrar" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                       {{ Auth::user()->name }} 
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
+                                <li class="nav-item dropdown">
+                                        <a class="nav-link" href="#pablo" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="far fa-user"></i>
+                                            <p>
+                                                <span class="d-lg-none d-md-block">Account</span>
+                                            </p>
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu">
+                                                <li class="nav-item">
+                                                        <a class="nav-link js-scroll-trigger" href="#" id="listPlace" >{{ Auth::user()->name }} </a>
+                                                </li>
+                                                <li>
+                                                    <a class="nav-link js-scroll-trigger" href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
+                                                        Salir
+                                                    </a>
+                
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                        {{ csrf_field() }}
+                                                    </form>
+                                                </li>
+                                        </ul>
+                                    </li>
                             @endif
                         </ul>
                     </div>

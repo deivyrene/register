@@ -79,7 +79,7 @@ class PlaceController extends Controller
         $place->ownerPlace = $request->ownerPlace;
         $place->mailPlace = $request->mailPlace;
         $place->edifice_id = $request->edifice_id;
-
+        $place->statusPlace = 1;
         $place->save();
 
         return redirect()->route('places.index')->with('info','Se ha registrado con éxito');
@@ -149,11 +149,11 @@ class PlaceController extends Controller
                 });
             
             });
+
+            return redirect()->route('places.index')->with('info','Se ha importado exitosamente');
         }
         else{
         
-            $edifice_id = $request->user()->hasEdifice();
-
             Excel::load($request->excel, function($reader) {
 
                 $excel = $reader->get();
@@ -166,21 +166,25 @@ class PlaceController extends Controller
                     $place->phonePlace = $row['phoneplace'];
                     $place->ownerPlace = $row['ownerplace'];
                     $place->mailPlace = $row['mailplace'];
-                    $place->edifice_id = $edifice_id;
+                    $place->edifice_id = $row['edifice_id'];
                     $place->save();
                 });
             
             });
 
+            return redirect('home')->with('info','Se ha importado exitosamente');
+
                 
         }
 
-        return redirect()->route('places.index')->with('info','Se ha importado exitosamente');
+        
     }
 
     public function getImport(){
 
-        return view('places.show');
+        
+            return view('places.show');
+  
     }
 
 }

@@ -43,8 +43,9 @@ class UserController extends Controller
     {
         $role = Role::all(['id', 'nameRole']);
         $edifice = Edifice::all(['id', 'nameEdifice']);
+        $userEdifice = "user";
 
-        return view('users.create', compact('role', 'edifice'));
+        return view('users.create', compact('role', 'edifice', 'userEdifice'));
     }
 
     

@@ -4,6 +4,7 @@
 
 @extends('condominium.fragment.searchRun')
 @extends('condominium.fragment.searchData')
+@extends('condominium.fragment.importData')
 
 <header class="masthead text-center text-white d-flex">
         <div class="container my-auto">
@@ -128,7 +129,7 @@
                                     <h4 class="card-title ">
                                             Listado de Oficinas 
                                             <a href="{{ route('places.create') }}" class="btn btn-sm btn-danger pull-right">Nuevo</a>
-                                            <a href="{{ url('import/get') }}" class="btn btn-sm btn-primary pull-right">Importar</a>
+                                            <a href="#" data-toggle="modal" data-target="#import" class="btn btn-sm btn-primary pull-right">Importar</a>
                                     </h4>
                                 </div>
                                 <table id="place"  class="table table-hover table-striped table-dark" >

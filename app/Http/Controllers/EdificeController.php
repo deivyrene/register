@@ -41,7 +41,7 @@ class EdificeController extends Controller
         $edifice->contactEdifice = $request->contactEdifice;
         $edifice->addressEdifice = $request->addressEdifice;
         $edifice->emailEdifice = $request->emailEdifice;
-
+        $edifice->statusEdifice = 1;
         $edifice->save();
 
         return redirect()->route('edifices.index')->with('info', 'La empresa se ha registrado');
