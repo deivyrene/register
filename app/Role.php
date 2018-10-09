@@ -11,8 +11,4 @@ class Role extends Model
         'descriptionRole'
     ];
 
-    public function users()
-    {
-        $this->belongsToMany('Siac\User');
-    }
 }

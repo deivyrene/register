@@ -12,6 +12,6 @@ class Edifice extends Model
 
     public function users(){
 
-        $this->belongsToMany('Siac\User');
+        $this->hasMany('Siac\User');
     }
 }

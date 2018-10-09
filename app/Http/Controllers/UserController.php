@@ -27,11 +27,9 @@ class UserController extends Controller
     public function getUserSystem()
     {
         
-        //$users = User::OrderBy('created_at', 'desc');
+        $users = User::with(['roles'])->OrderBy('created_at', 'desc');
 
-        $users = \DB::table('users')->join('role_user', 'role_user.user_id', '=', 'users.id' )
-                                             ->join('roles', 'roles.id', '=', 'role_user.role_id')
-                                             ->select('users.*', 'roles.nameRole');
+        //$users = User::all();
  
         return Datatables::of($users)->addColumn('action', function ($user) {
             return '<a href="http://localhost:8000/users/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>

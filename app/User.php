@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'edifice_id', 'role_id'
     ];
 
     /**
@@ -31,13 +31,13 @@ class User extends Authenticatable
     public function roles()
     {
         return $this
-            ->belongsToMany('Siac\Role');
+            ->belongsTo('Siac\Role', 'role_id');
     }
 
     public function edifices()
     {
         return $this
-            ->belongsToMany('Siac\Edifice')
+            ->belongsTo('Siac\Edifice', 'edifice_id')
             ->withTimestamps();
     }
 
@@ -75,16 +75,16 @@ class User extends Authenticatable
 
     public function hasEdifice()
     {
-            $edifice = $this->edifices()->where('user_id', Auth::id())->first();
+            $edifice = $this->edifices()->where('id', Auth::user()->edifice_id)->first();
 
-            $edifice_id= $edifice->pivot->edifice_id;
+            $edifice_id= $edifice->id;
 
             return $edifice_id;
     }
 
     public function typeRole(){
 
-            $role = $this->roles()->where('user_id', Auth::id())->first();
+            $role = $this->roles()->where('id', Auth::user()->role_id)->first();
 
             $nameRole = $role->nameRole;
 
