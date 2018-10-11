@@ -13,7 +13,7 @@
             <div class="card-body">
                 @include('users.fragment.error')
 
-                {{ Form::model($user, array('route' => ['users.update', $user[0]->id], 'method' => 'PUT')) }}
+                {{ Form::model($user[0], array('route' => ['users.update', $user[0]->id], 'method' => 'PUT')) }}
 
                     @include('users.fragment.form')
 
