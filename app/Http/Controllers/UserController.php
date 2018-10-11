@@ -78,13 +78,13 @@ class UserController extends Controller
     
     public function edit($id)
     {
-            $user = User::find($id);
-            $userRole = $user->roles[0]->id;
-            $nameRole = $user->roles[0]->nameRole;
-        
+            $user = User::with(['roles', 'edifices'])->where('users.id', $id)->get();
+            $userRole = $user[0]->roles->id;
+            $nameRole = $user[0]->roles->nameRole;
+            
             if($nameRole == "user"){
                 
-                $userEdifice = $user->edifices[0]->id;
+                $userEdifice = $user[0]->edifices->id;
                 $role = Role::all(['id', 'nameRole']);
                 $edifice = Edifice::all(['id', 'nameEdifice']);
 

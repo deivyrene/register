@@ -37,8 +37,7 @@ class User extends Authenticatable
     public function edifices()
     {
         return $this
-            ->belongsTo('Siac\Edifice', 'edifice_id')
-            ->withTimestamps();
+            ->belongsTo('Siac\Edifice', 'edifice_id');
     }
 
     public function authorizeRoles($roles)

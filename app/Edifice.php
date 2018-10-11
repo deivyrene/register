@@ -10,8 +10,4 @@ class Edifice extends Model
         'nameEdifice', 'addressEdifice', 'contactEdifice', 'emailEdifice'
     ];
 
-    public function users(){
-
-        $this->hasMany('Siac\User');
-    }
 }
