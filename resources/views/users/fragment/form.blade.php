@@ -25,7 +25,7 @@
 <div class="row">
         <div class="col-sm form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                 {{ Form::label('password', 'Contraseña') }}
-                <input type="password" value="{{@if(isset($user[0])) $user[0]->password @endif}}" class="form-control" id="password">
+                {{ Form::password('password',  ['class' => 'form-control', 'id' => 'password']) }}
 
                 @if ($errors->has('password'))
                 <span class="help-block">

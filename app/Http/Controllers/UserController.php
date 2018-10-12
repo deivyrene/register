@@ -2,6 +2,8 @@
 
 namespace Siac\Http\Controllers;
 
+use Siac\Http\Requests\UserRequest;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Siac\Http\Requests;
@@ -47,7 +49,7 @@ class UserController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {   
         $role = Role::find($request->role_id);
         $edifice = Edifice::find($request->edifice_id);
@@ -103,7 +105,7 @@ class UserController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $users = User::find($id);
 
