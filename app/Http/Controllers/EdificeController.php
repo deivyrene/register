@@ -35,16 +35,24 @@ class EdificeController extends Controller
 
     public function store(EdificeRequest $request){
 
-        $edifice = new Edifice;
+        if($request->password === $request->password_confirmation)
+        {
 
-        $edifice->nameEdifice = $request->nameEdifice;
-        $edifice->contactEdifice = $request->contactEdifice;
-        $edifice->addressEdifice = $request->addressEdifice;
-        $edifice->emailEdifice = $request->emailEdifice;
-        $edifice->statusEdifice = 1;
-        $edifice->save();
+            $edifice = new Edifice;
 
-        return redirect()->route('edifices.index')->with('info', 'La empresa se ha registrado');
+            $edifice->nameEdifice = $request->nameEdifice;
+            $edifice->contactEdifice = $request->contactEdifice;
+            $edifice->addressEdifice = $request->addressEdifice;
+            $edifice->emailEdifice = $request->emailEdifice;
+            $edifice->statusEdifice = 1;
+            $edifice->save();
+
+            return redirect()->route('edifices.index')->with('info', 'La empresa se ha registrado');
+            
+        }else{
+           
+            
+        }
     }
 
     public function edit($id){

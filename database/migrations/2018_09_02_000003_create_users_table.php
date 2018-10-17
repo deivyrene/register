@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
 
             $table->integer('edifice_id')->unsigned();
             $table->foreign('edifice_id')->references('id')->on('edifices')->onDelete('cascade');
+            $table->integer('place_id')->unsigned();
+            $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');
             $table->integer('role_id')->unsigned();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
 

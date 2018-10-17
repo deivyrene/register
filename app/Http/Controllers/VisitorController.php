@@ -92,7 +92,7 @@ class VisitorController extends Controller
          })->make(true);
     }
  
-    public function create()
+    public function create(Request $request)
     {
         $role = $request->user()->typeRole();
         if($role == "admin"){

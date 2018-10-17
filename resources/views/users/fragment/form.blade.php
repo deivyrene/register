@@ -62,7 +62,7 @@
         <select class="form-control"  name="role_id" id="role_id">
                         <option value="0">Seleccione</option>
                 @foreach($role as $roles)
-                        <option value="<?= $roles->id ?>" <?php if(isset($userRole)){ if($userRole == $roles->id){ echo "selected"; } }?>>{{$roles->nameRole}}</option>
+                        <option value="<?= $roles->id ?>" <?php if(isset($userRole)){ if($userRole == $roles->id){ echo "selected"; } }?>>{{$roles->descriptionRole}}</option>
                 @endforeach
         </select>
         </div>

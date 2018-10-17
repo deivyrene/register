@@ -41,7 +41,7 @@ class UserController extends Controller
    
     public function create()
     {
-        $role = Role::all(['id', 'nameRole']);
+        $role = Role::all();
         $edifice = Edifice::all(['id', 'nameEdifice']);
         $userEdifice = "user";
 
@@ -87,7 +87,7 @@ class UserController extends Controller
             if($nameRole == "user"){
                 
                 $userEdifice = $user[0]->edifices->id;
-                $role = Role::all(['id', 'nameRole']);
+                $role = Role::all();
                 $edifice = Edifice::all(['id', 'nameEdifice']);
 
                 return view('users.edit', compact('user', 'role', 'edifice', 'userRole', 'userEdifice'));
@@ -95,7 +95,7 @@ class UserController extends Controller
             if($nameRole == "admin"){
 
                 $userEdifice = "admin";
-                $role = Role::all(['id', 'nameRole']);
+                $role = Role::all();
                 $edifice = Edifice::all(['id', 'nameEdifice']);
 
                 return view('users.edit', compact('user', 'role', 'edifice', 'userRole', 'userEdifice'));
