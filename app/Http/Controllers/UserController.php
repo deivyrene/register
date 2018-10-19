@@ -31,8 +31,6 @@ class UserController extends Controller
         
         $users = User::with(['roles'])->OrderBy('created_at', 'desc');
 
-        //$users = User::all();
- 
         return Datatables::of($users)->addColumn('action', function ($user) {
             return '<a href="http://localhost:8000/users/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>
                     ';
@@ -74,7 +72,6 @@ class UserController extends Controller
             $user->edifices()->attach($edifice);
         }
        
-
         return redirect()->route('users.index')->with('info', 'El usuario se ha registrado');
     }
     
@@ -100,7 +97,6 @@ class UserController extends Controller
 
                 return view('users.edit', compact('user', 'role', 'edifice', 'userRole', 'userEdifice'));
             }
-
  
     }
 

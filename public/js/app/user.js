@@ -69,3 +69,17 @@ function destroyUserSystem(id){
   }
 
 //-------------------------------------------FIN--------------------------------------------------//
+
+
+$('#role_id').change(function(){
+    
+    var id = $('#role_id').val();
+
+    if(id === "1"){
+        $('#edifice_id').prop('disabled', 'disabled');
+    }
+    if(id === "2"){
+        $('#edifice_id').prop('disabled', false);
+    }
+
+})
