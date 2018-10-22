@@ -27,17 +27,21 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['user','admin']);
+        $request->user()->authorizeRoles(['user','admin', 'adminEdifice', 'owner']);
 
         $tipo = $request->user()->typeRole();
       
         $countEdifice= Edifice::all()->count();
         $countVisitor = Visitor::all()->count();
         $countVisitants = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
-                                           ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')->count();
+                                              ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')->count();
 
 
         if($tipo == "admin")
+        {
+            return view('index', compact('countEdifice', 'countVisitor', 'countVisitants'));
+        }
+        if($tipo == "adminEdifice")
         {
             return view('index', compact('countEdifice', 'countVisitor', 'countVisitants'));
         }
