@@ -20,7 +20,7 @@
                 {{ Form::text('emailEdifice', null, ['class' => 'form-control']) }}
         </div>
 </div>
-
+@if($edit === "none")
 <div class="row">
         <div class="col-sm form-group">
                 {{ Form::label('password', 'Contraseña') }}
@@ -31,7 +31,7 @@
                 {{ Form::text('password_confirmation', null, ['class' => 'form-control']) }}
         </div>
 </div>
-
+@endif
 <div class="row">
         <div class="col-sm-5"></div>
         <div class="col-sm-2 form-group">

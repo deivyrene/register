@@ -34,11 +34,12 @@
                             <a class="dropdown-item" href="{{ route('edifices.index') }}">Edificio</a>
                             <a class="dropdown-item" href="{{ route('places.index') }}">Oficinas</a>
                             <a class="dropdown-item" href="{{ route('roles.index') }}">Roles</a>
-                            <a class="dropdown-item" href="{{ route('users.index') }}">Usuarios Sistema</a>
+                            <a class="dropdown-item" href="{{ route('users.index') }}">Usuarios</a>
                         </div>
                     @elseif(Auth::user()->hasRole('adminEdifice'))
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="{{ route('places.index') }}">Oficinas</a>
+                            <a class="dropdown-item" href="{{ route('users.index') }}">Usuarios</a>
                         </div>
                     @endif
                     

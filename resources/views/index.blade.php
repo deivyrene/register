@@ -23,6 +23,7 @@
 
             </div>
         </div>
+        @if(Auth::user()->hasRole('admin'))
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
                 <div class="card-header card-header-success card-header-icon">
@@ -39,6 +40,7 @@
                 </div>
             </div>
         </div>
+        @endif
         <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">

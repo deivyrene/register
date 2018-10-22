@@ -89,11 +89,11 @@ class UserController extends Controller
             //Creando usuario adminEdifice
             if($role === "2"){
                 $user = new User;
-                $user->name     = $request->name;
-                $user->email    = $request->email;
-                $user->password = bcrypt($request->password);
+                $user->name        = $request->name;
+                $user->email       = $request->email;
+                $user->password    = bcrypt($request->password);
                 $user->edifice_id  = $request->edifice_id;
-                $user->role_id  = $request->role_id;
+                $user->role_id     = $request->role_id;
                 $user->save();
             }
             
@@ -109,11 +109,11 @@ class UserController extends Controller
             ]);
 
             $user = new User;
-            $user->name     = $request->name;
-            $user->email    = $request->email;
-            $user->password = bcrypt($request->password);
+            $user->name        = $request->name;
+            $user->email       = $request->email;
+            $user->password    = bcrypt($request->password);
             $user->edifice_id  = $edifice_id;
-            $user->role_id  = $request->role_id;
+            $user->role_id     = $request->role_id;
             $user->save();
         }
         
@@ -165,10 +165,10 @@ class UserController extends Controller
 
                 $users = User::find($id);
 
-                $users->name     = $request->name;
-                $users->email    = $request->email;
-                $users->password = bcrypt($request->password);
-                $users->role_id  = $request->role_id;
+                $users->name       = $request->name;
+                $users->email      = $request->email;
+                $users->password   = bcrypt($request->password);
+                $users->role_id    = $request->role_id;
                 $users->edifice_id = null;
                 
                 $users->save();
@@ -177,10 +177,10 @@ class UserController extends Controller
 
                 $users = User::find($id);
 
-                $users->name     = $request->name;
-                $users->email    = $request->email;
-                $users->password = bcrypt($request->password);
-                $users->role_id  = $request->role_id;
+                $users->name       = $request->name;
+                $users->email      = $request->email;
+                $users->password   = bcrypt($request->password);
+                $users->role_id    = $request->role_id;
                 $users->edifice_id = $request->edifice_id;
 
                 $users->save();
@@ -191,10 +191,10 @@ class UserController extends Controller
 
                 $users = User::find($id);
 
-                $users->name     = $request->name;
-                $users->email    = $request->email;
-                $users->password = bcrypt($request->password);
-                $users->role_id  = $request->role_id;
+                $users->name       = $request->name;
+                $users->email      = $request->email;
+                $users->password   = bcrypt($request->password);
+                $users->role_id    = $request->role_id;
                 $users->edifice_id = $request->edifice_id;
 
                 $users->save();

@@ -4,6 +4,7 @@ namespace Siac\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Siac\Edifice;
+use Siac\User;
 use Siac\Http\Requests\EdificeRequest;
 
 use Yajra\Datatables\Datatables;
@@ -30,7 +31,8 @@ class EdificeController extends Controller
 
     public function create(){
 
-        return view('edifices.create');
+        $edit = "none";
+        return view('edifices.create', compact('edit'));
     }
 
     public function store(EdificeRequest $request){
@@ -47,19 +49,30 @@ class EdificeController extends Controller
             $edifice->statusEdifice = 1;
             $edifice->save();
 
+            $user = new User;
+
+            $user->name = $request->contactEdifice;
+            $user->email = $request->emailEdifice;
+            $user->password = bcrypt($request->password);
+            $user->edifice_id = $edifice->id;
+            $user->role_id = 2;
+           
+            $user->save();
+
             return redirect()->route('edifices.index')->with('info', 'La empresa se ha registrado');
             
         }else{
            
-            
+            return redirect()->route('edifices.index')->with('info', 'Verifique nuevamente la contraseña');
         }
     }
 
     public function edit($id){
 
         $edifices = Edifice::find($id);
+        $edit = "true";
 
-        return view('edifices.edit', compact('edifices'));
+        return view('edifices.edit', compact('edifices', 'edit'));
 
     }
 
