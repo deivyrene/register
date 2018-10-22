@@ -47,7 +47,7 @@ var Place = function(table){
                 },
             },
         ],
-        pageLength: 10,
+        pageLength: 5,
     });
 
 };

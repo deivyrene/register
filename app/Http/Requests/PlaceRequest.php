@@ -28,7 +28,6 @@ class PlaceRequest extends FormRequest
             'namePlace' => 'required',
             'phonePlace' => 'required',
             'ownerPlace' => 'required',
-            'edifice_id' => 'required'
         ];
     }
 

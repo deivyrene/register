@@ -31,11 +31,11 @@ class UserController extends Controller
         $tipo = $request->user()->typeRole();
 
         if($tipo === "admin"){
-            $users = User::with(['roles'])->OrderBy('created_at', 'desc');
+            $users = User::with(['roles'])->where('role_id', 1)->orwhere('role_id', 2)->OrderBy('created_at', 'desc');
         }
         if($tipo === "adminEdifice"){
             $edifice_id = $request->user()->hasEdifice();
-            $users = User::with(['roles'])->where('edifice_id', $edifice_id)->OrderBy('created_at', 'desc');
+            $users = User::with(['roles'])->where('edifice_id', $edifice_id)->where('role_id', 3)->orwhere('role_id', 4)->OrderBy('created_at', 'desc');
         }
 
         return Datatables::of($users)->addColumn('action', function ($user) {
@@ -156,51 +156,58 @@ class UserController extends Controller
     {
         $tipo = $request->user()->typeRole();
 
-        if($tipo === "admin"){
+        if($request->password != ""){
 
-            $role = $request->role_id;
-            $edifice = $request->edifice_id;
+            if($tipo === "admin"){
 
-            if($role === "1"){
+                $role = $request->role_id;
+                $edifice = $request->edifice_id;
+                if($role === "1"){
 
-                $users = User::find($id);
+                    $users = User::find($id);
 
-                $users->name       = $request->name;
-                $users->email      = $request->email;
-                $users->password   = bcrypt($request->password);
-                $users->role_id    = $request->role_id;
-                $users->edifice_id = null;
-                
-                $users->save();
+                    $users->name       = $request->name;
+                    $users->email      = $request->email;
+                    $users->password   = bcrypt($request->password);
+                    $users->role_id    = $request->role_id;
+                    $users->edifice_id = null;
+                    
+                    $users->save();
+                }
+                if($role === "2"){
+
+                    $users = User::find($id);
+
+                    $users->name       = $request->name;
+                    $users->email      = $request->email;
+                    $users->password   = bcrypt($request->password);
+                    $users->role_id    = $request->role_id;
+                    $users->edifice_id = $request->edifice_id;
+
+                    $users->save();
+                }
             }
-            if($role === "2"){
 
-                $users = User::find($id);
+            if($tipo === "adminEdifice"){
 
-                $users->name       = $request->name;
-                $users->email      = $request->email;
-                $users->password   = bcrypt($request->password);
-                $users->role_id    = $request->role_id;
-                $users->edifice_id = $request->edifice_id;
+                    $users = User::find($id);
 
-                $users->save();
+                    $users->name       = $request->name;
+                    $users->email      = $request->email;
+                    $users->password   = bcrypt($request->password);
+                    $users->role_id    = $request->role_id;
+                    $users->edifice_id = $request->edifice_id;
+
+                    $users->save();
             }
+
+            return redirect()->route('users.index')->with('info','El usuario ha sido editado');
+
+        }else{
+            return redirect()->route('users.index')->with('info','Verifique contraseña');
         }
 
-        if($tipo === "adminEdifice"){
-
-                $users = User::find($id);
-
-                $users->name       = $request->name;
-                $users->email      = $request->email;
-                $users->password   = bcrypt($request->password);
-                $users->role_id    = $request->role_id;
-                $users->edifice_id = $request->edifice_id;
-
-                $users->save();
-        }
-
-        return redirect()->route('users.index')->with('info','El usuario ha sido editado');
+        
     }
 
     

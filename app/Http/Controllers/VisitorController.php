@@ -18,14 +18,14 @@ class VisitorController extends Controller
 {   
     public function index(Request $request){
 
-        $request->user()->authorizeRoles(['user','admin']);
+        $request->user()->authorizeRoles(['user','admin', 'adminEdifice', 'owner']);
         
         return view('visitors.index');
     }
 
     public function visitorList(Request $request){
         
-        $request->user()->authorizeRoles(['user','admin']);
+        $request->user()->authorizeRoles(['user','admin', 'adminEdifice', 'owner']);
 
         return view('visitors.visitors');
     }

@@ -28,6 +28,7 @@
         {{ Form::text('ownerPlace', null, ['class' => 'form-control']) }}
 </div>
 
+@if($preEdifice === "false")
 <div class="col-sm form-group">
         {{ Form::label('edifice_id', 'Edificio: ') }}
         <select class="form-control" name="edifice_id" id="edifice_id">
@@ -37,11 +38,11 @@
                 @endforeach
         </select>
 </div>
+@endif
 </div>
 
 <div class="row">
 <div class="col-sm-12 form-group text-center">
          {{ Form::submit('GUARDAR', ['class' => 'btn btn-warning']) }}
 </div>
-
 </div>
