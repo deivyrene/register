@@ -55,7 +55,7 @@ class UserController extends Controller
         if($tipo === "adminEdifice"){
             $edifice_id = $request->user()->hasEdifice();
             $edifice = Edifice::where('id', $edifice_id);
-            $role = Role::where('id', 3)->get();
+            $role = Role::where('nameRole', 'user')->get();
         }
         
         return view('users.create', compact('role', 'edifice'));
@@ -143,10 +143,10 @@ class UserController extends Controller
             $userRole    = $user[0]->role_id;
 
             $edifice_id = $request->user()->hasEdifice();
-            $edifice = Edifice::where('id', $edifice_id);
-            $role = Role::where('nameRole', 'user')->get();
+            $edifice = Edifice::where('id', $edifice_id)->get();
+            $role = Role::where('nameRole', 'user')->orwhere('nameRole', 'owner')->get();
 
-        }
+        }   
         
         return view('users.edit', compact('user', 'role', 'edifice', 'userRole', 'userEdifice'));
     }
@@ -169,8 +169,6 @@ class UserController extends Controller
                     $users->name       = $request->name;
                     $users->email      = $request->email;
                     $users->password   = bcrypt($request->password);
-                    $users->role_id    = $request->role_id;
-                    $users->edifice_id = null;
                     
                     $users->save();
                 }
@@ -181,22 +179,20 @@ class UserController extends Controller
                     $users->name       = $request->name;
                     $users->email      = $request->email;
                     $users->password   = bcrypt($request->password);
-                    $users->role_id    = $request->role_id;
-                    $users->edifice_id = $request->edifice_id;
 
                     $users->save();
                 }
             }
 
             if($tipo === "adminEdifice"){
+                
+                    $edifice_id = $request->user()->hasEdifice();
 
                     $users = User::find($id);
 
                     $users->name       = $request->name;
                     $users->email      = $request->email;
                     $users->password   = bcrypt($request->password);
-                    $users->role_id    = $request->role_id;
-                    $users->edifice_id = $request->edifice_id;
 
                     $users->save();
             }

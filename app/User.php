@@ -81,6 +81,15 @@ class User extends Authenticatable
             return $edifice_id;
     }
 
+    public function nameEdifice(){
+
+            $edifice = $this->edifices()->where('id', Auth::user()->edifice_id)->first();
+
+            $edifice_id= $edifice->nameEdifice;
+
+            return $edifice_id;
+    }
+
     public function typeRole(){
 
             $role = $this->roles()->where('id', Auth::user()->role_id)->first();

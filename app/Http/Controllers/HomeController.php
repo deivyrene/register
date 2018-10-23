@@ -33,6 +33,7 @@ class HomeController extends Controller
       
         if($tipo == "admin")
         {
+            
             $countEdifice= Edifice::all()->count();
             $countVisitor = Visitor::all()->count();
             $countVisitants = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
@@ -44,7 +45,6 @@ class HomeController extends Controller
         if($tipo == "adminEdifice")
         {
             $edifice_id = $request->user()->hasEdifice();
-            
             $countVisitor = Visitor::all()->count();
             $countVisitants = \DB::table('places')
                                             ->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
