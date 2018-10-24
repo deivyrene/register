@@ -42,7 +42,7 @@ class PlaceController extends Controller
         }
 
         return Datatables::of($places)->addColumn('action', function ($user) {
-            return '<a href="http://localhost:8000/places/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>';
+            return '<a href="http://localhost:8000/places/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>';
         })->make(true);
 
     }

@@ -35,12 +35,11 @@ class UserController extends Controller
         }
         if($tipo === "adminEdifice"){
             $edifice_id = $request->user()->hasEdifice();
-            $users = User::with(['roles'])->where('edifice_id', $edifice_id)->where('role_id', 3)->orwhere('role_id', 4)->OrderBy('created_at', 'desc');
+            $users = User::with(['roles'])->where('edifice_id', $edifice_id)->OrderBy('created_at', 'desc');
         }
 
         return Datatables::of($users)->addColumn('action', function ($user) {
-            return '<a href="http://localhost:8000/users/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>
-                    ';
+            return '<a href="http://localhost:8000/users/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>';
         })->make(true);
     }
    
@@ -53,12 +52,13 @@ class UserController extends Controller
             $edifice = Edifice::all(['id', 'nameEdifice']);
         }
         if($tipo === "adminEdifice"){
-            $edifice_id = $request->user()->hasEdifice();
-            $edifice = Edifice::where('id', $edifice_id);
+            $userEdifice = $request->user()->hasEdifice();
+            $edifice = Edifice::where('id', $userEdifice)->get();
+            $userRole = '3';
             $role = Role::where('nameRole', 'user')->get();
         }
         
-        return view('users.create', compact('role', 'edifice'));
+        return view('users.create', compact('role', 'edifice', 'userRole', 'userEdifice'));
     }
 
     
