@@ -5,7 +5,8 @@
     <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
         <div class="container-fluid">
             <div class="navbar-wrapper">
-                <a class="navbar-brand" href="#"> Bienvenido: {{ Auth::user()->name }} <br> 
+                <a class="navbar-brand" href="#"> Bienvenido: {{ Auth::user()->name }} ( {{ Auth::user()->nameRole() }} )<br> 
+                                                    
                                                 @if(Auth::user()->hasRole('adminEdifice'))
                                                   Empresa:    {{ Auth::user()->nameEdifice() }}
                                                 @endif

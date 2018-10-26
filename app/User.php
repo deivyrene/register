@@ -98,5 +98,13 @@ class User extends Authenticatable
 
             return $nameRole;
     }
+    public function nameRole(){
+
+        $role = $this->roles()->where('id', Auth::user()->role_id)->first();
+
+        $nameRole = $role->descriptionRole;
+
+        return $nameRole;
+}
 
 }

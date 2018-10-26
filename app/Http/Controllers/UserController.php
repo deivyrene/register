@@ -144,7 +144,7 @@ class UserController extends Controller
 
             $edifice_id = $request->user()->hasEdifice();
             $edifice = Edifice::where('id', $edifice_id)->get();
-            $role = Role::where('nameRole', 'user')->orwhere('nameRole', 'owner')->get();
+            $role = Role::where('nameRole', 'user')->orWhere('nameRole', 'owner')->orWhere('nameRole', 'adminEdifice')->get();
 
         }   
         
