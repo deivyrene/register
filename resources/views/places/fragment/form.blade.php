@@ -31,7 +31,7 @@
 @if($preEdifice === "false")
 <div class="col-sm form-group">
         {{ Form::label('edifice_id', 'Edificio: ') }}
-        <select class="form-control" name="edifice_id" id="edifice_id">
+        <select class="form-control" <?php if(isset($place)){ echo "disabled = 'disabled'"; } ?> name="edifice_id" id="edifice_id">
                         <option value="0">Seleccione</option>
                 @foreach($edifices as $edifice)
                         <option value="<?= $edifice->id ?>" <?php if(isset($place)){ if($place->edifice_id == $edifice->id){ echo "selected"; } }?>>{{$edifice->nameEdifice}}</option>

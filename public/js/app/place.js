@@ -61,6 +61,18 @@ $('#listPlace').click(function(){
 
 });
 
+function fileValidation(){
+    var fileInput = document.getElementById('file');
+    var filePath = fileInput.value;
+    //var allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
+    var allowedExtensions = /(.xlsx|.xls)$/i;
+    if(!allowedExtensions.exec(filePath)){
+        alert('Ingrese un archivo excel para importar');
+        fileInput.value = '';
+        return false;
+    }
+}
+
 function destroyPlace(id){
     $.ajax({
         url: '/destroyplace',

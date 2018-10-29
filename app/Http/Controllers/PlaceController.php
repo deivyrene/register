@@ -69,25 +69,27 @@ class PlaceController extends Controller
         $role = $request->user()->typeRole();
 
         if($role === "admin"){
+
             $place = new Place;
 
             $place->numberPlace = $request->numberPlace;
-            $place->namePlace = $request->namePlace;
-            $place->phonePlace = $request->phonePlace;
-            $place->ownerPlace = $request->ownerPlace;
-            $place->mailPlace = $request->mailPlace;
-            $place->edifice_id = $request->edifice_id;
+            $place->namePlace   = $request->namePlace;
+            $place->phonePlace  = $request->phonePlace;
+            $place->ownerPlace  = $request->ownerPlace;
+            $place->mailPlace   = $request->mailPlace;
+            $place->edifice_id  = $request->edifice_id;
             $place->statusPlace = 1;
+
             $place->save();
 
             $user = new User;
 
-            $user->name = $request->ownerPlace;
-            $user->email = $request->mailPlace;
-            $user->password = bcrypt("123456");
+            $user->name       = $request->ownerPlace;
+            $user->email      = $request->mailPlace;
+            $user->password   = bcrypt("123456");
             $user->edifice_id = $request->edifice_id;
-            $user->place_id = $place->id;
-            $user->role_id = 4;
+            $user->place_id   = $place->id;
+            $user->role_id    = 4;
            
             $user->save();
 
@@ -100,22 +102,23 @@ class PlaceController extends Controller
             $place = new Place;
 
             $place->numberPlace = $request->numberPlace;
-            $place->namePlace = $request->namePlace;
-            $place->phonePlace = $request->phonePlace;
-            $place->ownerPlace = $request->ownerPlace;
-            $place->mailPlace = $request->mailPlace;
-            $place->edifice_id = $edifice_id;
+            $place->namePlace   = $request->namePlace;
+            $place->phonePlace  = $request->phonePlace;
+            $place->ownerPlace  = $request->ownerPlace;
+            $place->mailPlace   = $request->mailPlace;
+            $place->edifice_id  = $edifice_id;
             $place->statusPlace = 1;
+
             $place->save();
 
             $user = new User;
 
-            $user->name = $request->ownerPlace;
-            $user->email = $request->mailPlace;
-            $user->password = bcrypt("123456");
+            $user->name       = $request->ownerPlace;
+            $user->email      = $request->mailPlace;
+            $user->password   = bcrypt("123456");
             $user->edifice_id = $edifice_id;
-            $user->place_id = $place->id;
-            $user->role_id = 4;
+            $user->place_id   = $place->id;
+            $user->role_id    = 4;
            
             $user->save();
         }
@@ -148,28 +151,31 @@ class PlaceController extends Controller
         $role = $request->user()->typeRole();
 
         if($role === "admin"){
+
             $place = Place::find($id);
 
             $place->numberPlace = $request->numberPlace;
-            $place->namePlace = $request->namePlace;
-            $place->phonePlace = $request->phonePlace;
-            $place->ownerPlace = $request->ownerPlace;
-            $place->mailPlace = $request->mailPlace;
-            $place->edifice_id = $request->edifice_id;
+            $place->namePlace   = $request->namePlace;
+            $place->phonePlace  = $request->phonePlace;
+            $place->ownerPlace  = $request->ownerPlace;
+            $place->mailPlace   = $request->mailPlace;
+            $place->edifice_id  = $request->edifice_id;
 
             $place->save();
         }
+
         if($role === "adminEdifice"){
+
             $edifice_id = $request->user()->hasEdifice();
 
             $place = Place::find($id);
 
             $place->numberPlace = $request->numberPlace;
-            $place->namePlace = $request->namePlace;
-            $place->phonePlace = $request->phonePlace;
-            $place->ownerPlace = $request->ownerPlace;
-            $place->mailPlace = $request->mailPlace;
-            $place->edifice_id = $edifice_id;
+            $place->namePlace   = $request->namePlace;
+            $place->phonePlace  = $request->phonePlace;
+            $place->ownerPlace  = $request->ownerPlace;
+            $place->mailPlace   = $request->mailPlace;
+            $place->edifice_id  = $edifice_id;
 
             $place->save();
         }
@@ -194,10 +200,50 @@ class PlaceController extends Controller
 
     public function importPlace(Request $request)
     {
+        
+       $role = $request->user()->typeRole();
 
-        $role = $request->user()->typeRole();
+        if($role === "admin"){
 
-        if($role == "admin"){
+            Excel::load($request->excel, function($reader) {
+
+                $excel = $reader->get();
+                // iteracción
+                $excel->each(function($row){
+
+                if( $row['numberplace'] !== null ){
+                    echo "no esta vacio";
+                }
+                else{
+                    echo "esta vacio";
+                }
+
+                //dd($row['numberplace']);
+
+                  /*  $place = new Place;
+                    $place->numberPlace = $row['numberplace'];
+                    $place->namePlace   = $row['nameplace'];
+                    $place->phonePlace  = $row['phoneplace'];
+                    $place->ownerPlace  = $row['ownerplace'];
+                    $place->mailPlace   = $row['mailplace'];
+                    $place->edifice_id  = $row['edifice_id'];
+                    $place->save();
+
+                    $user = new User;
+                    $user->name       = $row['ownerplace'];
+                    $user->email      = $row['mailplace'];
+                    $user->password   = bcrypt("123456");
+                    $user->edifice_id = $row['edifice_id'];
+                    $user->place_id   = $place->id;
+                    $user->role_id    = 4;
+                    $user->save();*/
+                });
+            
+            });
+
+           // return redirect()->route('places.index')->with('info','Se ha importado exitosamente');
+        }
+        if($role === "adminEdifice"){
             
             Excel::load($request->excel, function($reader) {
 
@@ -205,53 +251,35 @@ class PlaceController extends Controller
                 // iteracción
                 $excel->each(function($row){
     
-                    $place = new Place();
+                    $place = new Place;
                     $place->numberPlace = $row['numberplace'];
-                    $place->namePlace = $row['nameplace'];
-                    $place->phonePlace = $row['phoneplace'];
-                    $place->ownerPlace = $row['ownerplace'];
-                    $place->mailPlace = $row['mailplace'];
-                    $place->edifice_id = $row['edifice_id'];
+                    $place->namePlace   = $row['nameplace'];
+                    $place->phonePlace  = $row['phoneplace'];
+                    $place->ownerPlace  = $row['ownerplace'];
+                    $place->mailPlace   = $row['mailplace'];
+                    $place->edifice_id  = $row['edifice_id'];
                     $place->save();
+
+                    $user = new User;
+                    $user->name       = $row['ownerplace'];
+                    $user->email      = $row['mailplace'];
+                    $user->password   = bcrypt("123456");
+                    $user->edifice_id = $row['edifice_id'];
+                    $user->place_id   = $place->id;
+                    $user->role_id    = 4;
+                    $user->save();
                 });
             
             });
 
-            return redirect()->route('places.index')->with('info','Se ha importado exitosamente');
+            return redirect('place.index')->with('info','Se ha importado exitosamente');   
         }
-        else{
-        
-            Excel::load($request->excel, function($reader) {
-
-                $excel = $reader->get();
-                // iteracción
-                $excel->each(function($row){
-    
-                    $place = new Place();
-                    $place->numberPlace = $row['numberplace'];
-                    $place->namePlace = $row['nameplace'];
-                    $place->phonePlace = $row['phoneplace'];
-                    $place->ownerPlace = $row['ownerplace'];
-                    $place->mailPlace = $row['mailplace'];
-                    $place->edifice_id = $row['edifice_id'];
-                    $place->save();
-                });
-            
-            });
-
-            return redirect('home')->with('info','Se ha importado exitosamente');
-
-                
-        }
-
-        
     }
 
     public function getImport(){
 
-        
             return view('places.show');
-  
+
     }
 
 }

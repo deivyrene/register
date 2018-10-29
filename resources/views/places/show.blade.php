@@ -11,11 +11,15 @@
                 </h4>
             </div>
             <div class="card-body">
+                    <br><br>
                 <form method="POST" action="{{ url('import') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                 <div class="row">
                     <div class="col-sm-12 text-center">
-                            <input type="file" name="excel">
+                        <h2>Cargar archivo excel</h2>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                            <input type="file" onchange="return fileValidation()" id="file" name="excel">
                     </div>
                 </div>
                 <div class="row">
