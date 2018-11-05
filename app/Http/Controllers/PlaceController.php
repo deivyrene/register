@@ -211,14 +211,12 @@ class PlaceController extends Controller
                 // iteracción
                 $excel->each(function($row){
 
-                if( $row['numberplace'] !== null ){
+                if( $row['numberplace'] != null && $row['nameplace']  != null && $row['phoneplace'] != null && $row['ownerplace'] != null && $row['mailplace']  != null && $row['edifice_id'] != null){
                     echo "no esta vacio";
                 }
                 else{
                     echo "esta vacio";
                 }
-
-                //dd($row['numberplace']);
 
                   /*  $place = new Place;
                     $place->numberPlace = $row['numberplace'];
@@ -241,7 +239,7 @@ class PlaceController extends Controller
             
             });
 
-           // return redirect()->route('places.index')->with('info','Se ha importado exitosamente');
+            //return redirect()->route('places.index')->with('info','Se ha importado exitosamente');
         }
         if($role === "adminEdifice"){
             
