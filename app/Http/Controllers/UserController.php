@@ -101,7 +101,7 @@ class UserController extends Controller
 
         if($tipo === "adminEdifice"){
             $edifice_id = $request->user()->hasEdifice();
-
+            
             $this->validate($request,[
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
@@ -113,7 +113,7 @@ class UserController extends Controller
             $user->email       = $request->email;
             $user->password    = bcrypt($request->password);
             $user->edifice_id  = $edifice_id;
-            $user->role_id     = $request->role_id;
+            $user->role_id     = 3;
             $user->save();
         }
         

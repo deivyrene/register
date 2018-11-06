@@ -34,14 +34,15 @@ class VisitorController extends Controller
     {  
         $role = $request->user()->typeRole();
 
-        if($role == "admin"){
+        if($role === "admin"){
             
             $visitor = \DB::table('visitors')->join('place_visitors', 'place_visitors.visitor_id', '=', 'visitors.id' )
                                              ->join('places', 'places.id', '=', 'place_visitors.place_id')
                                              ->select('visitors.*', 'place_visitors.comments', 'places.edifice_id')
                                              ->groupBy('visitors.emailVisitor');
 
-        }else{
+        }
+        if($role === "adminEdifice"){
 
             $edifice_id = $request->user()->hasEdifice();
 
@@ -51,7 +52,18 @@ class VisitorController extends Controller
                                              ->groupBy('visitors.emailVisitor')
                                              ->where('edifice_id', $edifice_id);
                                            
-        } 
+        }
+        if($role === "user"){
+            
+            $edifice_id = $request->user()->hasEdifice();
+
+            $visitor = \DB::table('visitors')->join('place_visitors', 'place_visitors.visitor_id', '=', 'visitors.id' )
+                                             ->join('places', 'places.id', '=', 'place_visitors.place_id')
+                                             ->select('visitors.*', 'place_visitors.comments', 'places.edifice_id')
+                                             ->groupBy('visitors.emailVisitor')
+                                             ->where('edifice_id', $edifice_id);
+
+        }
 
          return Datatables::of($visitor)->addColumn('action', function ($user) {
              return '<a href="http://localhost:8000/visitors/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>';
