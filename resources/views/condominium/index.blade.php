@@ -8,47 +8,26 @@
 
 <header class="masthead text-center text-white d-flex">
         <div class="container my-auto">
-            <div class="row" >
+           
                    
-                    <div class="col-md">
-                        <div id="registerVisitor" style="display: none; background:#FFFFFF; margin-top:100px; border: 2px solid #fb6816; padding: 20px; border-radius: 15px;">
-                            <br><br>
-                                <h4 style="color:black">
-                                        Datos Básicos
-                                </h4><br>
+                    <div class="col-sm">
+                        <div id="registerVisitor" style="display: none; background:#FFFFFF; margin-top:100px; border: 2px solid #111111; padding: 20px; border-radius: 15px;">
                                 <input type="hidden" name="flag" id="flag" value="0">
                                 <input type="hidden" name="visitor_id" id="visitor_id" value="0">
                                 <div class="row">
                                         <div class="col-sm form-group">
-                                                <input type="text" name="nameVisitor" id="nameVisitor" placeholder="Nombres" class="form-control">
+                                                <input type="text" name="rutVisitor" title="Run" id="rutVisitorForm" placeholder="Run" maxlength="9"  class="form-control">
                                         </div>
                                         <div class="col-sm form-group">
-                                                <input type="text" name="surnameVisitor" id="surnameVisitor" placeholder="Apellidos" class="form-control">
+                                                <input type="text" name="nameVisitor" title="Nombres" id="nameVisitor" placeholder="Nombres" class="form-control">
                                         </div>
                                         <div class="col-sm form-group">
-                                                <input type="text" name="rutVisitor" id="rutVisitorForm" placeholder="Run" maxlength="9"  class="form-control">
+                                                <input type="text" name="surnameVisitor" title="Apellidos" id="surnameVisitor" placeholder="Apellidos" class="form-control">
                                         </div>
-                                </div>
-                                <div class="row">
-                                        <div class="col-sm form-group">
-                                                <input type="text" name="emailVisitor" id="emailVisitor" placeholder="Email" class="form-control">
-                                        </div>
-                                        <div class="col-sm form-group">
-                                                <input type="text" name="addressVisitor" id="addressVisitor" placeholder="Direccion" class="form-control">
-                                        </div>
-                                        
-                                        <div class="col-sm form-group">
-                                                <input type="text" name="phoneVisitor" id="phoneVisitor" placeholder="Fono" class="form-control">
-                                        </div>   
                                                    
                                         <div class="col-sm form-group">
-                                                <input type="text" name="companyVisitor" id="companyVisitor" placeholder="Empresa" class="form-control">
-                                        </div>
-                                </div><br>
-                                <h4 style="color:black">
-                                        Información interna
-                                </h4><br>
-                                <div class="row">  
+                                                <input type="text" name="companyVisitor" title="Empresa" id="companyVisitor" placeholder="Empresa" class="form-control">
+                                        </div>  
                                         <div class="col-sm form-group">
                                                 <select class="form-control" name="place_id" id="place_id">
                                                                 <option value="0">Oficina</option>
@@ -57,27 +36,16 @@
                                                         @endforeach
                                                 </select>
                                         </div>
-                                        <div class="col-sm form-group">
-                                                <input type="text" name="comments" id="comments"  placeholder="Motivo visita" class="form-control">
-                                        </div>
-                                </div><br>
-                                <div class="row">
-                                        <div class="col-sm-4"></div>
-                                        <div class="col-sm-4">
-                                                <div class="form-group">
-                                                        <button class="btn btn-primary" id="saveVisitor" type="button">Guardar</button>
-                                                        <button class="btn btn-danger" id="backRun" type="button">Regresar</button>
-                                                </div>
-                                        </div>
-                                        <div class="col-sm-4"></div>
-                                </div><br>
+                                        <div class="col-sm form-group" style="margin-top: 6px;">
+                                                        <button class="btn btn-sm btn-primary" id="saveVisitor" type="button">Guardar</button>
+                                        </div>  
+                                </div>
                         </div> 
 
                     </div>
                         
-            </div>
                     
-                    <div class="row" style="margin-top: 100px;" id="tableFirst">
+                    <div class="row" style="margin-top: 20px;" id="tableFirst">
                         <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" >
                             <div class="card-header card-header-primary" style="background:#e2e2e2; color:black">
                                 <h4 class="card-title">
@@ -92,7 +60,6 @@
                                                 <th>Empresa</th>
                                                 <th>N°</th>
                                                 <th>Oficina</th>
-                                                <th>Motivo</th>
                                                 <th>Entrada</th>
                                         </tr>
                                 </thead>
@@ -115,7 +82,6 @@
                                                     <th>Empresa</th>
                                                     <th>N°</th>
                                                     <th>Oficina</th>
-                                                    <th>Motivo</th>
                                                     <th>Entrada</th>
                                             </tr>
                                     </thead>
@@ -128,8 +94,6 @@
                                 <div class="card-header card-header-primary" style="background:#e2e2e2; color:black">
                                     <h4 class="card-title ">
                                             Listado de Oficinas 
-                                            <a href="{{ route('places.create') }}" class="btn btn-sm btn-danger pull-right">Nuevo</a>
-                                            <a href="#" data-toggle="modal" data-target="#import" class="btn btn-sm btn-primary pull-right">Importar</a>
                                     </h4>
                                 </div>
                                 <table id="place"  class="table table-hover table-striped table-dark" >
@@ -141,7 +105,7 @@
                                                         <th>Phono</th>
                                                         <th>Email</th>
                                                         <th>Edificio</th>
-                                                        <th>Acción</th>
+                                                        <th>-</th>
                                             </tr>
                                     </thead>
                                 </table>
@@ -150,9 +114,11 @@
 
                 <div style="margin-top: 50px; background:#292929; border-radius: 15px 15px 15px 15px">    
                     <h4>
-                        Bienvenido: {{ Auth::user()->name }} ( {{ Auth::user()->nameRole() }} )
+                        Edificio: {{ Auth::user()->nameEdifice() }}
+                        
+                        | {{ Auth::user()->nameRole() }} : {{ Auth::user()->name }}
                                                         
-                         |  Empresa: {{ Auth::user()->nameEdifice() }}  
+                        | {{ Carbon\Carbon::now()->format('d/m/Y')}}
                         
                     </h4>
                 </div>

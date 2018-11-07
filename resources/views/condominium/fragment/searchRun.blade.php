@@ -19,7 +19,7 @@
                                         </div> 
                                 </div>
                         
-                                <div class="row">
+                                <!--<div class="row">
                                         <div class="col text-center">
                                                 Visitas Recientes
                                         </div>
@@ -41,7 +41,7 @@
                                                 </tbody>
                                         </table>
                                         </div>
-                                </div>
+                                </div>-->
                         </div>
                 </div>
         </div>

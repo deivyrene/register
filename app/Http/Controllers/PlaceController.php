@@ -26,9 +26,14 @@ class PlaceController extends Controller
         $role = $request->user()->typeRole();
 
         if($role === "admin"){
+
                 $places = Place::with(['edifices' => function($query){
                     $query->select('id','nameEdifice');
                 }])->orderBy('id', 'asc');
+
+            return Datatables::of($places)->addColumn('action', function ($user) {
+                return '<a href="http://localhost:8000/places/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>';
+            })->make(true);
 
         }
         if($role === "adminEdifice"){
@@ -39,6 +44,10 @@ class PlaceController extends Controller
                     $query->select('id','nameEdifice');
                 }])->where('edifice_id', $edifice_id)->orderBy('id', 'asc');
 
+                return Datatables::of($places)->addColumn('action', function ($user) {
+                    return '<a href="http://localhost:8000/places/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>';
+                })->make(true);
+
         }
         if($role === "user"){
             
@@ -47,6 +56,8 @@ class PlaceController extends Controller
                 $places = Place::with(['edifices' => function($query) {
                     $query->select('id','nameEdifice');
                 }])->where('edifice_id', $edifice_id)->orderBy('id', 'asc');
+
+                return Datatables::of($places)->addColumn('action', function ($user) { })->make(true);
         }
         if($role === "owner"){
             
@@ -55,11 +66,10 @@ class PlaceController extends Controller
             $places = Place::with(['edifices' => function($query) {
                 $query->select('id','nameEdifice');
             }])->where('edifice_id', $edifice_id)->orderBy('id', 'asc');
-    }
 
-        return Datatables::of($places)->addColumn('action', function ($user) {
-            return '<a href="http://localhost:8000/places/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>';
-        })->make(true);
+            return Datatables::of($places)->addColumn('action', function ($user) { })->make(true);
+        }
+
 
     }
 

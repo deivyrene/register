@@ -13,7 +13,6 @@ var Visitor = function(table){
             {data: 'companyVisitor', name: 'companyVisitor'},
             {data: 'numberPlace', name: 'numberPlace'},
             {data: 'namePlace', name: 'namePlace'},
-            {data: 'comments', name: 'comments'},
             {data: 'arrivalTime', name: 'arrivalTime'},
         ],
         dom: 'Bfrtip',
@@ -64,9 +63,6 @@ var Visitants = function(table){
             {data: 'nameVisitor', name: 'nameVisitor'},
             {data: 'surnameVisitor', name: 'surnameVisitor'},
             {data: 'rutVisitor', name: 'rutVisitor'},
-            {data: 'emailVisitor', name: 'emailVisitor'},
-            {data: 'phoneVisitor', name: 'phoneVisitor'},
-            {data: 'addressVisitor', name: 'addressVisitor'},
             {data: 'companyVisitor', name: 'companyVisitor'},
             {data: 'action', name: 'action'}
         ],
@@ -155,7 +151,7 @@ $('#searchRun').click(function(){
                 //console.log(data[0]);
                 if(data[0]){
                     $('#buscarRun').modal('toggle');
-                    $('#tableFirst').hide("slow");
+                    //$('#tableFirst').hide("slow");
                     $('#tableRange').hide("slow");
                     $('#tablePlaces').hide("slow");
                     $('#registerVisitor').show("slow");
@@ -164,15 +160,12 @@ $('#searchRun').click(function(){
                     $('#nameVisitor').val(data[0].nameVisitor).prop('disabled', true);
                     $('#surnameVisitor').val(data[0].surnameVisitor).prop('disabled', true);
                     $('#rutVisitorForm').val(data[0].rutVisitor).prop('disabled', true);
-                    $('#emailVisitor').val(data[0].emailVisitor).prop('disabled', true);
-                    $('#addressVisitor').val(data[0].addressVisitor).prop('disabled', true);
-                    $('#phoneVisitor').val(data[0].phoneVisitor).prop('disabled', true);
                     $('#companyVisitor').val(data[0].companyVisitor).prop('disabled', true);
                     $('#flag').val("1");
                 }
                 else{
                     $('#buscarRun').modal('toggle');
-                    $('#tableFirst').hide("slow");
+                    //$('#tableFirst').hide("slow");
                     $('#tableRange').hide("slow");
                     $('#tablePlaces').hide("slow");
                     $('#registerVisitor').show("slow");
@@ -180,9 +173,6 @@ $('#searchRun').click(function(){
                     $('#rutVisitorForm').val(rutVisitor);
                     $('#nameVisitor').val("");
                     $('#surnameVisitor').val("");
-                    $('#emailVisitor').val("");
-                    $('#addressVisitor').val("");
-                    $('#phoneVisitor').val("");
                     $('#companyVisitor').val("");
                     $('#flag').val("0");
                 }   
@@ -198,13 +188,9 @@ $('#saveVisitor').click(function(){
     var nameVisitor = $('#nameVisitor').val();
     var surnameVisitor = $('#surnameVisitor').val();
     var rutVisitor = $('#rutVisitorForm').val();
-    var emailVisitor = $('#emailVisitor').val();
-    var addressVisitor = $('#addressVisitor').val();
-    var phoneVisitor = $('#phoneVisitor').val();
     var companyVisitor = $('#companyVisitor').val();
     var place_id = $('#place_id').val();
     var visitor_id = $('#visitor_id').val();
-    var comments = $('#comments').val();
     var flag = $('#flag').val();
 
     $.ajax({
@@ -214,12 +200,8 @@ $('#saveVisitor').click(function(){
                    rutVisitor : rutVisitor,
                    nameVisitor : nameVisitor,
                    surnameVisitor : surnameVisitor,
-                   emailVisitor : emailVisitor,
-                   addressVisitor : addressVisitor,
-                   phoneVisitor :  phoneVisitor,
                    companyVisitor :  companyVisitor,
                    place_id : place_id,
-                   comments : comments,
                    visitor_id : visitor_id,
                    flag : flag
               }
@@ -264,9 +246,7 @@ $('#saveVisitor').click(function(){
                 {data: 'nameVisitor', name: 'nameVisitor'},
                 {data: 'surnameVisitor', name: 'surnameVisitor'},
                 {data: 'companyVisitor', name: 'companyVisitor'},
-                {data: 'numberPlace', name: 'numberPlace'},
                 {data: 'namePlace', name: 'namePlace'},
-                {data: 'comments', name: 'comments'},
                 {data: 'arrivalTime', name: 'arrivalTime'},
             ],
             dom: 'Bfrtip',

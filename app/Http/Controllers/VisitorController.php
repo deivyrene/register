@@ -150,9 +150,6 @@ class VisitorController extends Controller
          $visitor->nameVisitor     = $request->nameVisitor;
          $visitor->surnameVisitor = $request->surnameVisitor;
          $visitor->rutVisitor = $request->rutVisitor;
-         $visitor->emailVisitor = $request->emailVisitor;
-         $visitor->phoneVisitor = $request->phoneVisitor;
-         $visitor->addressVisitor = $request->addressVisitor;
          $visitor->companyVisitor = $request->companyVisitor;
 
          $visitor->save();
@@ -187,7 +184,6 @@ class VisitorController extends Controller
                 
                 $visitor = new PlaceVisitor;
  
-                $visitor->comments     = $request->comments;
                 $visitor->arrivalTime = \Carbon\Carbon::now();
                 $visitor->departureTime = "";
                 $visitor->visitor_id = $request->visitor_id;
@@ -205,16 +201,12 @@ class VisitorController extends Controller
                 $visitor->nameVisitor     = $request->nameVisitor;
                 $visitor->surnameVisitor = $request->surnameVisitor;
                 $visitor->rutVisitor = $request->rutVisitor;
-                $visitor->emailVisitor = $request->emailVisitor;
-                $visitor->phoneVisitor = $request->phoneVisitor;
-                $visitor->addressVisitor = $request->addressVisitor;
                 $visitor->companyVisitor = $request->companyVisitor;
 
                 $visitor->save();
         
                 $visitorPlace = new PlaceVisitor;
  
-                $visitorPlace->comments = $request->comments;
                 $visitorPlace->arrivalTime = \Carbon\Carbon::now();
                 $visitorPlace->departureTime = "";
                 $visitorPlace->visitor_id = $visitor->id;
