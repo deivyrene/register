@@ -54,7 +54,7 @@ class VisitorController extends Controller
                                            
         }
         if($role === "user"){
-            
+
             $edifice_id = $request->user()->hasEdifice();
 
             $visitor = \DB::table('visitors')->join('place_visitors', 'place_visitors.visitor_id', '=', 'visitors.id' )
@@ -62,7 +62,16 @@ class VisitorController extends Controller
                                              ->select('visitors.*', 'place_visitors.comments', 'places.edifice_id')
                                              ->groupBy('visitors.emailVisitor')
                                              ->where('edifice_id', $edifice_id);
+        }
+        if($role === "owner"){
 
+            $edifice_id = $request->user()->hasEdifice();
+
+            $visitor = \DB::table('visitors')->join('place_visitors', 'place_visitors.visitor_id', '=', 'visitors.id' )
+                                             ->join('places', 'places.id', '=', 'place_visitors.place_id')
+                                             ->select('visitors.*', 'place_visitors.comments', 'places.edifice_id')
+                                             ->groupBy('visitors.emailVisitor')
+                                             ->where('edifice_id', $edifice_id);
         }
 
          return Datatables::of($visitor)->addColumn('action', function ($user) {
@@ -74,11 +83,16 @@ class VisitorController extends Controller
     {  
         $role = $request->user()->typeRole();
 
-        if($role == "admin"){
+        if($role === "admin"){
             
             $visitor = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
                                            ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id');
-        }else{
+        }
+        if($role === "adminEdifice"){
+            
+        }
+        if($role === "user"){
+
             $edifice_id = $request->user()->hasEdifice();
 
             if($request->flag == "dateRange"){
@@ -95,9 +109,11 @@ class VisitorController extends Controller
                                  ->where('edifice_id', $edifice_id)->whereDate('arrivalTime', Carbon::now()->format('Y-m-d'));
 
             }
+        }
 
+        if($role === "owner"){
             
-        } 
+        }
 
          return Datatables::of($visitor)->addColumn('action', function ($user) {
              return '<a href="#" title="Marcar salida" onclick="outVisitor('.$user->id.')" class="btn btn-sm btn-success"><i class="far fa-clock"></i>';

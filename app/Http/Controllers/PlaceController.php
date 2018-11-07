@@ -40,6 +40,22 @@ class PlaceController extends Controller
                 }])->where('edifice_id', $edifice_id)->orderBy('id', 'asc');
 
         }
+        if($role === "user"){
+            
+                $edifice_id = $request->user()->hasEdifice();
+
+                $places = Place::with(['edifices' => function($query) {
+                    $query->select('id','nameEdifice');
+                }])->where('edifice_id', $edifice_id)->orderBy('id', 'asc');
+        }
+        if($role === "owner"){
+            
+            $edifice_id = $request->user()->hasEdifice();
+
+            $places = Place::with(['edifices' => function($query) {
+                $query->select('id','nameEdifice');
+            }])->where('edifice_id', $edifice_id)->orderBy('id', 'asc');
+    }
 
         return Datatables::of($places)->addColumn('action', function ($user) {
             return '<a href="http://localhost:8000/places/'.$user->id.'/edit" class="btn btn-sm btn-info"><i class="material-icons">border_color</i></a>';
