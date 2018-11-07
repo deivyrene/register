@@ -149,12 +149,12 @@
                     </div>
 
                 <div style="margin-top: 50px; background:#292929; border-radius: 15px 15px 15px 15px">    
-                    <h3>
+                    <h4>
                         Bienvenido: {{ Auth::user()->name }} ( {{ Auth::user()->nameRole() }} )
                                                         
                          |  Empresa: {{ Auth::user()->nameEdifice() }}  
                         
-                    </h3>
+                    </h4>
                 </div>
         </div>
 
