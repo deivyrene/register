@@ -13,7 +13,7 @@
                                                 <div class="input-group">
                                                         <input type="text" name="rutVisitor" id="rutVisitor" style="text-transform:uppercase" maxlength="9" class="form-control" placeholder="Run" >
                                                         <div class="input-group-append">
-                                                        <button class="input-group-text" id="searchRun" type="button">Buscar</button>
+                                                                <button class="input-group-text" id="searchRun" type="button">Buscar</button>
                                                         </div>
                                                 </div>
                                         </div> 

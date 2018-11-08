@@ -2,26 +2,27 @@
 
 @section('content')
 
-@extends('condominium.fragment.searchRun')
 @extends('condominium.fragment.searchData')
 @extends('condominium.fragment.importData')
 
-<header class="masthead text-center text-white d-flex">
+<header class="masthead text-center text-white d-flex" style="height: 950px;">
         <div class="container my-auto">
            
-                   
-                    <div class="col-sm">
-                        <div id="registerVisitor" style="display: none; background:#FFFFFF; margin-top:100px; border: 2px solid #111111; padding: 20px; border-radius: 15px;">
+                    <div class="col-sm" style="margin-top: -100px;">
+                        <div id="registerVisitor" style="background:#FFFFFF; margin-top:100px; border: 2px solid #111111; padding: 20px; border-radius: 15px;">
                                 <input type="hidden" name="flag" id="flag" value="0">
                                 <input type="hidden" name="visitor_id" id="visitor_id" value="0">
                                 <div class="row">
-                                        <div class="col-sm form-group">
+                                        <div class="col-md input-group">
                                                 <input type="text" name="rutVisitor" title="Run" id="rutVisitorForm" placeholder="Run" maxlength="9"  class="form-control">
+                                                <div class="input-group-append">
+                                                        <button class="form-control" id="searchRun" type="button">Buscar</button>
+                                                </div>
                                         </div>
-                                        <div class="col-sm form-group">
+                                        <div class="col-md form-group">
                                                 <input type="text" name="nameVisitor" title="Nombres" id="nameVisitor" placeholder="Nombres" class="form-control">
                                         </div>
-                                        <div class="col-sm form-group">
+                                        <div class="col-md form-group">
                                                 <input type="text" name="surnameVisitor" title="Apellidos" id="surnameVisitor" placeholder="Apellidos" class="form-control">
                                         </div>
                                                    
@@ -48,9 +49,9 @@
                     <div class="row" style="margin-top: 20px;" id="tableFirst">
                         <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" >
                             <div class="card-header card-header-primary" style="background:#e2e2e2; color:black">
-                                <h4 class="card-title">
+                                
                                         Visitas Recientes al {{ Carbon\Carbon::now()->format('d/m/Y')}}
-                                </h4>
+                                
                             </div>
                             <table id="visitor"  class="table table-hover table-striped table-dark" >
                                 <thead class="thead-dark text-default">
@@ -67,7 +68,7 @@
                         </div>
                     </div>
 
-                    <div class="row" style="margin-top: 100px; display: none" id="tableRange">
+                    <div class="row" style="margin-top: 20px; display: none" id="tableRange">
                             <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" >
                                 <div class="card-header card-header-primary" style="background:#e2e2e2; color:black">
                                     <h4 class="card-title ">
@@ -80,7 +81,6 @@
                                                     <th>Nombre</th>
                                                     <th>Apellido</th>
                                                     <th>Empresa</th>
-                                                    <th>N°</th>
                                                     <th>Oficina</th>
                                                     <th>Entrada</th>
                                             </tr>
@@ -89,7 +89,7 @@
                             </div>
                     </div>
 
-                    <div class="row" style="margin-top: 100px; display: none" id="tablePlaces">
+                    <div class="row" style="margin-top: 20px; display: none" id="tablePlaces">
                             <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" >
                                 <div class="card-header card-header-primary" style="background:#e2e2e2; color:black">
                                     <h4 class="card-title ">
@@ -112,7 +112,7 @@
                             </div>
                     </div>
 
-                <div style="margin-top: 50px; background:#292929; border-radius: 15px 15px 15px 15px">    
+                <div style="margin-top: 20px; background:#292929; border-radius: 15px 15px 15px 15px">    
                     <h4>
                         Edificio: {{ Auth::user()->nameEdifice() }}
                         

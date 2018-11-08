@@ -97,7 +97,7 @@ var Visitants = function(table){
                 },
             },
         ],
-        pageLength: 10,
+        pageLength: 5,
     });
 
 };
@@ -122,6 +122,15 @@ function destroyVisitor(id){
     });
   }
 
+  $('#listToday').click(function(){
+    
+    $('#tableFirst').show("slow");
+    $('#tableRange').hide("slow");
+    //$('#registerVisitor').hide("slow");
+    $('#tablePlaces').hide("slow");
+
+});
+
 $("#backRun").click(function(){
 
     location.reload();
@@ -131,8 +140,8 @@ $("#backRun").click(function(){
 //Buscar un registro de visitante
 $('#searchRun').click(function(){
 
-     var route = "http://localhost:8000/getvisitor";
-     var rutVisitor = $('#rutVisitor').val();
+     var route = "/getvisitor";
+     var rutVisitor = $('#rutVisitorForm').val();
      
 
     if(rutVisitor.length == 0){
@@ -152,28 +161,29 @@ $('#searchRun').click(function(){
                 if(data[0]){
                     $('#buscarRun').modal('toggle');
                     //$('#tableFirst').hide("slow");
-                    $('#tableRange').hide("slow");
-                    $('#tablePlaces').hide("slow");
-                    $('#registerVisitor').show("slow");
+                   // $('#tableRange').hide("slow");
+                   // $('#tablePlaces').hide("slow");
+                   // $('#registerVisitor').show("slow");
 
                     $('#visitor_id').val(data[0].id);
-                    $('#nameVisitor').val(data[0].nameVisitor).prop('disabled', true);
-                    $('#surnameVisitor').val(data[0].surnameVisitor).prop('disabled', true);
-                    $('#rutVisitorForm').val(data[0].rutVisitor).prop('disabled', true);
-                    $('#companyVisitor').val(data[0].companyVisitor).prop('disabled', true);
+                    $('#nameVisitor').val(data[0].nameVisitor).prop('disabled', false);
+                    $('#surnameVisitor').val(data[0].surnameVisitor).prop('disabled', false);
+                    $('#rutVisitorForm').val(data[0].rutVisitor).prop('disabled', false);
+                    $('#companyVisitor').val(data[0].companyVisitor).prop('disabled', false);
                     $('#flag').val("1");
                 }
                 else{
+                    alert("No existe, rellene los campos!!");
                     $('#buscarRun').modal('toggle');
                     //$('#tableFirst').hide("slow");
-                    $('#tableRange').hide("slow");
-                    $('#tablePlaces').hide("slow");
-                    $('#registerVisitor').show("slow");
+                    //$('#tableRange').hide("slow");
+                   // $('#tablePlaces').hide("slow");
+                   // $('#registerVisitor').show("slow");
 
-                    $('#rutVisitorForm').val(rutVisitor);
-                    $('#nameVisitor').val("");
-                    $('#surnameVisitor').val("");
-                    $('#companyVisitor').val("");
+                    $('#rutVisitorForm').val(rutVisitor).prop('disabled', false);
+                    $('#nameVisitor').val("").prop('disabled', false);
+                    $('#surnameVisitor').val("").prop('disabled', false);
+                    $('#companyVisitor').val("").prop('disabled', false);
                     $('#flag').val("0");
                 }   
         });
@@ -184,7 +194,7 @@ $('#searchRun').click(function(){
  //Buscar un registro de visitante
 $('#saveVisitor').click(function(){
 
-    var route = "http://localhost:8000/storevisitor";
+    var route = "/storevisitor";
     var nameVisitor = $('#nameVisitor').val();
     var surnameVisitor = $('#surnameVisitor').val();
     var rutVisitor = $('#rutVisitorForm').val();

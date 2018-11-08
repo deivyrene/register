@@ -56,7 +56,7 @@ $('#listPlace').click(function(){
     
     $('#tableFirst').hide("slow");
     $('#tableRange').hide("slow");
-    $('#registerVisitor').hide("slow");
+    //$('#registerVisitor').hide("slow");
     $('#tablePlaces').show("slow");
 
 });

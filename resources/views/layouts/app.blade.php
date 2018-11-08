@@ -71,6 +71,9 @@
                                     <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarRun">Ingresar Visita</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="#" id="listToday">Visitas del Día</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarFecha">Rango de Fecha</a>
                                 </li>
                                 <li class="nav-item">
@@ -128,13 +131,13 @@
     <!-- Datatables -->
     <script src="{{{ URL::asset('js/jquery.dataTables.min.js') }}}"></script>
 
-    <script src="{{{ URL::asset('js/plugins/dataTables/dataTables.buttons.min.js') }}}"></script>
-    <script src="{{{ URL::asset('js/plugins/dataTables/buttons.flash.min.js') }}}"></script>
-    <script src="{{{ URL::asset('js/plugins/dataTables/jszip.min.js') }}}"></script>
-    <script src="{{{ URL::asset('js/plugins/dataTables/pdfmake.min.js') }}}"></script>
-    <script src="{{{ URL::asset('js/plugins/dataTables/vfs_fonts.js') }}}"></script>
-    <script src="{{{ URL::asset('js/plugins/dataTables/buttons.html5.min.js') }}}"></script>
-    <script src="{{{ URL::asset('js/plugins/dataTables/buttons.print.min.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/datatables/dataTables.buttons.min.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/datatables/buttons.flash.min.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/datatables/jszip.min.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/datatables/pdfmake.min.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/datatables/vfs_fonts.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/datatables/buttons.html5.min.js') }}}"></script>
+    <script src="{{{ URL::asset('js/plugins/datatables/buttons.print.min.js') }}}"></script>
 
     <script src="{{{ URL::asset('landing/js/init.js') }}}"></script>
 
