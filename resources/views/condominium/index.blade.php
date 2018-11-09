@@ -14,7 +14,7 @@
                                 <input type="hidden" name="visitor_id" id="visitor_id" value="0">
                                 <div class="row">
                                         <div class="col-md input-group">
-                                                <input type="text" name="rutVisitor" title="Run" id="rutVisitorForm" placeholder="Run" maxlength="9"  class="form-control">
+                                                <input type="text" name="rutVisitor" style="text-transform:uppercase" title="Run" id="rutVisitorForm" placeholder="Run" maxlength="9"  class="form-control">
                                                 <div class="input-group-append">
                                                         <button class="form-control" id="searchRun" type="button">Buscar</button>
                                                 </div>
@@ -25,7 +25,7 @@
                                         <div class="col-md form-group">
                                                 <input type="text" name="surnameVisitor" title="Apellidos" id="surnameVisitor" placeholder="Apellidos" class="form-control">
                                         </div>
-                                                   
+                               
                                         <div class="col-sm form-group">
                                                 <input type="text" name="companyVisitor" title="Empresa" id="companyVisitor" placeholder="Empresa" class="form-control">
                                         </div>  
@@ -38,7 +38,7 @@
                                                 </select>
                                         </div>
                                         <div class="col-sm form-group" style="margin-top: 6px;">
-                                                        <button class="btn btn-sm btn-primary" id="saveVisitor" type="button">Guardar</button>
+                                                        <button class="btn btn-sm btn-primary" id="saveVisitor" type="button">Registrar</button>
                                         </div>  
                                 </div>
                         </div> 
@@ -71,9 +71,9 @@
                     <div class="row" style="margin-top: 20px; display: none" id="tableRange">
                             <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" >
                                 <div class="card-header card-header-primary" style="background:#e2e2e2; color:black">
-                                    <h4 class="card-title ">
+                                    
                                             Consulta de visitas
-                                    </h4>
+                                    
                                 </div>
                                 <table id="visitorRange"  class="table table-hover table-striped table-dark" >
                                     <thead class="thead-dark text-default">
@@ -92,9 +92,9 @@
                     <div class="row" style="margin-top: 20px; display: none" id="tablePlaces">
                             <div class="col-lg" style="padding: 15px; background:#292929; border-radius:10px; " id="visitorsList" >
                                 <div class="card-header card-header-primary" style="background:#e2e2e2; color:black">
-                                    <h4 class="card-title ">
+                                    
                                             Listado de Oficinas 
-                                    </h4>
+                                    
                                 </div>
                                 <table id="place"  class="table table-hover table-striped table-dark" >
                                     <thead class="thead-dark text-default">

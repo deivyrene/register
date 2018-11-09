@@ -203,23 +203,29 @@ $('#saveVisitor').click(function(){
     var visitor_id = $('#visitor_id').val();
     var flag = $('#flag').val();
 
-    $.ajax({
-        type: 'get',
-        url:  route,
-        data: {
-                   rutVisitor : rutVisitor,
-                   nameVisitor : nameVisitor,
-                   surnameVisitor : surnameVisitor,
-                   companyVisitor :  companyVisitor,
-                   place_id : place_id,
-                   visitor_id : visitor_id,
-                   flag : flag
-              }
-    }).done(function(data){
-
-            alert('Se ha registrado exitosamente');
-            location.reload();
-    });
+    if(nameVisitor !== "" && surnameVisitor !== "" && rutVisitor !== "" && companyVisitor !== "" && place_id !== ""){
+        $.ajax({
+            type: 'get',
+            url:  route,
+            data: {
+                       rutVisitor : rutVisitor,
+                       nameVisitor : nameVisitor,
+                       surnameVisitor : surnameVisitor,
+                       companyVisitor :  companyVisitor,
+                       place_id : place_id,
+                       visitor_id : visitor_id,
+                       flag : flag
+                  }
+        }).done(function(data){
+    
+                alert('Se ha registrado exitosamente');
+                location.reload();
+        });
+    }
+    else{
+        alert("No debe dejar campos vacíos");
+    }
+    
 
 });
 

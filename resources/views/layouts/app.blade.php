@@ -67,9 +67,9 @@
                                     <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#exampleModal">Ingresar</a>
                                 </li>
                             @else
-                                <li class="nav-item">
+                                <!--<li class="nav-item">
                                     <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarRun">Ingresar Visita</a>
-                                </li>
+                                </li>-->
                                 <li class="nav-item">
                                     <a class="nav-link js-scroll-trigger" href="#" id="listToday">Visitas del Día</a>
                                 </li>
