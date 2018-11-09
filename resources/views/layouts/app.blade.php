@@ -66,7 +66,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#exampleModal">Ingresar</a>
                                 </li>
-                            @else
+                            @elseif(Auth::user()->hasRole('user'))
                                 <!--<li class="nav-item">
                                     <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarRun">Ingresar Visita</a>
                                 </li>-->
@@ -86,6 +86,24 @@
                                                 Salir
                                     </a>
                 
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            @elseif(Auth::user()->hasRole('owner'))
+                                <!--<li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#buscarRun">Ingresar Visita</a>
+                                </li>-->
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="#" id="listToday">Visitas del Día</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                                Salir
+                                    </a>
+                    
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 {{ csrf_field() }}
                                     </form>

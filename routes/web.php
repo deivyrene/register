@@ -77,7 +77,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('outvisitor', 'VisitorController@outVisitor');
 
     //Route para importar excel
-
     Route::post('/import', 'PlaceController@importPlace');
 
     Route::get('/import/get', 'PlaceController@getImport');

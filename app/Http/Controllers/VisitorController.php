@@ -65,13 +65,13 @@ class VisitorController extends Controller
         }
         if($role === "owner"){
 
-            $edifice_id = $request->user()->hasEdifice();
+            $place_id = $request->user()->hasPlace();
 
             $visitor = \DB::table('visitors')->join('place_visitors', 'place_visitors.visitor_id', '=', 'visitors.id' )
                                              ->join('places', 'places.id', '=', 'place_visitors.place_id')
                                              ->select('visitors.*', 'place_visitors.comments', 'places.edifice_id')
                                              ->groupBy('visitors.emailVisitor')
-                                             ->where('edifice_id', $edifice_id);
+                                             ->where('place_id', $place_id);
         }
 
          return Datatables::of($visitor)->addColumn('action', function ($user) {
@@ -97,9 +97,12 @@ class VisitorController extends Controller
 
             if($request->flag == "dateRange"){
 
+                $fromDate =  Carbon::parse($request->dateIn)->timestamp;
+                $toDate = Carbon::parse($request->dateOf)->timestamp;
+
                 $visitor = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
                                  ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
-                                 ->where('edifice_id', $edifice_id)->whereBetween('arrivalTime', [$request->dateIn, $request->dateOf]);
+                                 ->where('edifice_id', $edifice_id)->whereBetween('arrivalTime', [$fromDate, $toDate]);
                 
 
             }else{
@@ -112,7 +115,22 @@ class VisitorController extends Controller
         }
 
         if($role === "owner"){
-            
+            $edifice_id = $request->user()->hasEdifice();
+
+            if($request->flag == "dateRange"){
+
+                $visitor = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
+                                 ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
+                                 ->where('edifice_id', $edifice_id)->whereBetween('arrivalTime', [$request->dateIn, $request->dateOf]);
+                
+
+            }else{
+                
+            $visitor = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
+                                 ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
+                                 ->where('edifice_id', $edifice_id)->whereDate('arrivalTime', Carbon::now()->format('Y-m-d'));
+
+            }
         }
 
          return Datatables::of($visitor)->addColumn('action', function ($user) {

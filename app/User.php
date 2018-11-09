@@ -40,6 +40,11 @@ class User extends Authenticatable
             ->belongsTo('Siac\Edifice', 'edifice_id');
     }
 
+    public function places()
+    {
+        return $this->belongsTo('Siac\Place', 'place_id');
+    }
+
     public function authorizeRoles($roles)
     {
         if ($this->hasAnyRole($roles)) {
@@ -85,9 +90,17 @@ class User extends Authenticatable
 
             $edifice = $this->edifices()->where('id', Auth::user()->edifice_id)->first();
 
-            $edifice_id= $edifice->nameEdifice;
+            $edifice_id = $edifice->nameEdifice;
 
             return $edifice_id;
+    }
+    public function hasPlace(){
+
+            $place = $this->places()->where('id', Auth::user()->place_id)->first();
+
+            $place_id = $place->id;
+
+            return $place_id;
     }
 
     public function typeRole(){

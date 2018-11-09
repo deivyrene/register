@@ -65,8 +65,9 @@ class HomeController extends Controller
         if($tipo == "owner")
         {
             $edifice_id = $request->user()->hasEdifice();
-            
-            return view('condominium.index', compact('places'));
+            $places = Place::where('edifice_id','=',$edifice_id)->get();
+
+            return view('condominium.owner', compact('places'));
         }
 
         
