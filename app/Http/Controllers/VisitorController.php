@@ -115,6 +115,7 @@ class VisitorController extends Controller
         }
 
         if($role === "owner"){
+            
             $edifice_id = $request->user()->hasEdifice();
 
             if($request->flag == "dateRange"){
