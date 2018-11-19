@@ -178,32 +178,44 @@ class PlaceController extends Controller
 
         if($role === "admin"){
 
-            $place = Place::find($id);
+            try{
 
-            $place->numberPlace = $request->numberPlace;
-            $place->namePlace   = $request->namePlace;
-            $place->phonePlace  = $request->phonePlace;
-            $place->ownerPlace  = $request->ownerPlace;
-            $place->mailPlace   = $request->mailPlace;
-            $place->edifice_id  = $request->edifice_id;
+                $place = Place::find($id);
 
-            $place->save();
+                $place->numberPlace = $request->numberPlace;
+                $place->namePlace   = $request->namePlace;
+                $place->phonePlace  = $request->phonePlace;
+                $place->ownerPlace  = $request->ownerPlace;
+                $place->mailPlace   = $request->mailPlace;
+                
+                $place->save();
+
+            }catch (\Illuminate\Database\QueryException $e) {
+
+                return redirect()->route('places.index')->with('info','No se pudo editar, Verifique los datos!!');
+            }
         }
 
         if($role === "adminEdifice"){
 
-            $edifice_id = $request->user()->hasEdifice();
+            try{
 
-            $place = Place::find($id);
+                $edifice_id = $request->user()->hasEdifice();
 
-            $place->numberPlace = $request->numberPlace;
-            $place->namePlace   = $request->namePlace;
-            $place->phonePlace  = $request->phonePlace;
-            $place->ownerPlace  = $request->ownerPlace;
-            $place->mailPlace   = $request->mailPlace;
-            $place->edifice_id  = $edifice_id;
+                $place = Place::find($id);
 
-            $place->save();
+                $place->numberPlace = $request->numberPlace;
+                $place->namePlace   = $request->namePlace;
+                $place->phonePlace  = $request->phonePlace;
+                $place->ownerPlace  = $request->ownerPlace;
+                $place->mailPlace   = $request->mailPlace;
+            
+                $place->save();
+
+            }catch (\Illuminate\Database\QueryException $e) {
+                
+                return redirect()->route('places.index')->with('info','No se pudo editar, Verifique los datos!!');
+            }
         }
 
         return redirect()->route('places.index')->with('info','Se ha editado exitosamente');

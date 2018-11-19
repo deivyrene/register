@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Place extends Model
 {
     protected $fillable = [
-        'numberPlace', 'namePlace', 'phonePlace', 'ownerPlace', 'mailPlace', 'edifice_id'
+        'numberPlace', 
+        'namePlace', 
+        'phonePlace', 
+        'ownerPlace', 
+        'mailPlace', 
+        'edifice_id'
     ];
 
     public function visitors()
