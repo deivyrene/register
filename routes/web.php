@@ -81,5 +81,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/import/get', 'PlaceController@getImport');
 
+    //Route para verificar email duplicado
+    Route::get('verifyEmail', 'UserController@verifyEmail');
+
     
 });

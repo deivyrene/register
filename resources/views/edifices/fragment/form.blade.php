@@ -17,7 +17,7 @@
         </div>
         <div class="col-sm form-group">
                 {{ Form::label('emailEdifice', 'Email Administrador') }}
-                {{ Form::email('emailEdifice', null, ['class' => 'form-control', 'required']) }}
+                {{ Form::email('emailEdifice', null, ['class' => 'form-control', 'required', 'id' => 'email']) }}
         </div>
 </div>
 @if($edit === "none")

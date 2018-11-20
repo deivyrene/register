@@ -96,57 +96,82 @@ class PlaceController extends Controller
 
         if($role === "admin"){
 
-            $place = new Place;
+            try{
+                $place = new Place;
 
-            $place->numberPlace = $request->numberPlace;
-            $place->namePlace   = $request->namePlace;
-            $place->phonePlace  = $request->phonePlace;
-            $place->ownerPlace  = $request->ownerPlace;
-            $place->mailPlace   = $request->mailPlace;
-            $place->edifice_id  = $request->edifice_id;
-            $place->statusPlace = 1;
+                $place->numberPlace = $request->numberPlace;
+                $place->namePlace   = $request->namePlace;
+                $place->phonePlace  = $request->phonePlace;
+                $place->ownerPlace  = $request->ownerPlace;
+                $place->mailPlace   = $request->mailPlace;
+                $place->edifice_id  = $request->edifice_id;
+                $place->statusPlace = 1;
+                $place->save();
 
-            $place->save();
+            }catch(\Illuminate\Database\QueryException $e){
 
-            $user = new User;
+                return redirect()->route('places.index')->with('info','No se registro, Verifique los datos!!');
+            }
 
-            $user->name       = $request->ownerPlace;
-            $user->email      = $request->mailPlace;
-            $user->password   = bcrypt("123456");
-            $user->edifice_id = $request->edifice_id;
-            $user->place_id   = $place->id;
-            $user->role_id    = 4;
-           
-            $user->save();
+            try{
+                $user = new User;
 
+                $user->name       = $request->ownerPlace;
+                $user->email      = $request->mailPlace;
+                $user->password   = bcrypt("123456");
+                $user->edifice_id = $request->edifice_id;
+                $user->place_id   = $place->id;
+                $user->role_id    = 4;
+                $user->save();
+
+            }catch(\Illuminate\Database\QueryException $e){
+
+                $id = $place->id;
+                $place->destroy($id);
+
+                return redirect()->route('places.index')->with('info','No se registro, Verifique los datos!!');
+            }
+            
         }
         
         if($role === "adminEdifice"){
-
-            $edifice_id = $request->user()->hasEdifice();
             
-            $place = new Place;
+            try{
 
-            $place->numberPlace = $request->numberPlace;
-            $place->namePlace   = $request->namePlace;
-            $place->phonePlace  = $request->phonePlace;
-            $place->ownerPlace  = $request->ownerPlace;
-            $place->mailPlace   = $request->mailPlace;
-            $place->edifice_id  = $edifice_id;
-            $place->statusPlace = 1;
+                $edifice_id = $request->user()->hasEdifice();
+                
+                $place = new Place;
 
-            $place->save();
+                $place->numberPlace = $request->numberPlace;
+                $place->namePlace   = $request->namePlace;
+                $place->phonePlace  = $request->phonePlace;
+                $place->ownerPlace  = $request->ownerPlace;
+                $place->mailPlace   = $request->mailPlace;
+                $place->edifice_id  = $edifice_id;
+                $place->statusPlace = 1;
 
-            $user = new User;
+                $place->save();
 
-            $user->name       = $request->ownerPlace;
-            $user->email      = $request->mailPlace;
-            $user->password   = bcrypt("123456");
-            $user->edifice_id = $edifice_id;
-            $user->place_id   = $place->id;
-            $user->role_id    = 4;
-           
-            $user->save();
+            }catch(\Illuminate\Database\QueryException $e){
+
+                return redirect()->route('places.index')->with('info','No se registro, Verifique los datos!!');
+            }
+
+            try{
+                $user = new User;
+
+                $user->name       = $request->ownerPlace;
+                $user->email      = $request->mailPlace;
+                $user->password   = bcrypt("123456");
+                $user->edifice_id = $edifice_id;
+                $user->place_id   = $place->id;
+                $user->role_id    = 4;
+            
+                $user->save();
+            }catch(\Illuminate\Database\QueryException $e){
+
+                return redirect()->route('places.index')->with('info','No se registro, Verifique los datos!!');
+            }
         }
         
 
@@ -241,7 +266,7 @@ class PlaceController extends Controller
         
        $role = $request->user()->typeRole();
 
-        if($role === "admin"){
+        if($role === "admin" || $role === "adminEdifice"){
 
             Excel::load($request->excel, function($reader) {
 
@@ -249,59 +274,41 @@ class PlaceController extends Controller
                 // iteracción
                 $excel->each(function($row){
 
-                    $place = new Place;
-                    $place->numberPlace = $row['numberplace'];
-                    $place->namePlace   = $row['nameplace'];
-                    $place->phonePlace  = $row['phoneplace'];
-                    $place->ownerPlace  = $row['ownerplace'];
-                    $place->mailPlace   = $row['mailplace'];
-                    $place->edifice_id  = $row['edifice_id'];
-                    $place->save();
+                    try{
+                        $place = new Place;
+                        $place->numberPlace = $row['numberplace'];
+                        $place->namePlace   = $row['nameplace'];
+                        $place->phonePlace  = $row['phoneplace'];
+                        $place->ownerPlace  = $row['ownerplace'];
+                        $place->mailPlace   = $row['mailplace'];
+                        $place->edifice_id  = $row['edifice_id'];
+                        $place->save();
+                    }catch(\Illuminate\Database\QueryException $e){
+                        return redirect()->route('places.index')->with('info','Verifique los datos del archivo!!');
+                    }
+                    
+                    try{
+                        $user = new User;
+                        $user->name       = $row['ownerplace'];
+                        $user->email      = $row['mailplace'];
+                        $user->password   = bcrypt("123456");
+                        $user->edifice_id = $row['edifice_id'];
+                        $user->place_id   = $place->id;
+                        $user->role_id    = 4;
+                        $user->save();
+                    }catch(\Illuminate\Database\QueryException $e){
 
-                    $user = new User;
-                    $user->name       = $row['ownerplace'];
-                    $user->email      = $row['mailplace'];
-                    $user->password   = bcrypt("123456");
-                    $user->edifice_id = $row['edifice_id'];
-                    $user->place_id   = $place->id;
-                    $user->role_id    = 4;
-                    $user->save();
+                        $id = $place->id;
+                        $place->destroy($id);
+                        
+                        return redirect()->route('places.index')->with('info','Verifique los datos del archivo!!');
+                    }
+                    
                 });
             
             });
 
             return redirect()->route('places.index')->with('info','Se ha importado exitosamente');
-        }
-        if($role === "adminEdifice"){
-            
-            Excel::load($request->excel, function($reader) {
-
-                $excel = $reader->get();
-                // iteracción
-                $excel->each(function($row){
-    
-                    $place = new Place;
-                    $place->numberPlace = $row['numberplace'];
-                    $place->namePlace   = $row['nameplace'];
-                    $place->phonePlace  = $row['phoneplace'];
-                    $place->ownerPlace  = $row['ownerplace'];
-                    $place->mailPlace   = $row['mailplace'];
-                    $place->edifice_id  = $row['edifice_id'];
-                    $place->save();
-
-                    $user = new User;
-                    $user->name       = $row['ownerplace'];
-                    $user->email      = $row['mailplace'];
-                    $user->password   = bcrypt("123456");
-                    $user->edifice_id = $row['edifice_id'];
-                    $user->place_id   = $place->id;
-                    $user->role_id    = 4;
-                    $user->save();
-                });
-            
-            });
-
-            return redirect('place.index')->with('info','Se ha importado exitosamente');   
         }
     }
 

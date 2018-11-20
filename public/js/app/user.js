@@ -82,4 +82,30 @@ $('#role_id').change(function(){
         $('#edifice_id').prop('disabled', false);
     }
 
-})
+});
+
+$('#email').change(function(){
+
+    let email = $('#email').val();
+
+    $.ajax({
+        url: '/verifyEmail',
+        type: 'get',
+        data: {email:email},
+        success:function(data){
+            if(data === "true"){
+                alert('Correo existe, ingrese nuevamente.');
+                document.getElementById("email").value = "";
+                document.getElementById("email").focus();
+            }
+            
+        }, 
+        error:function(jqXHR, textStatus, errorThrown){
+                
+            console.log('error::'+errorThrown);
+            console.log('error::'+textStatus);
+            console.log('error::'+jqXHR);
+        }
+    });
+
+});

@@ -206,6 +206,16 @@ class UserController extends Controller
         
     }
 
+    public function verifyEmail(request $request){
+
+        if (User::where('email', $request->email)->exists()) {
+            return "true";
+        }
+        else{
+            return "false";
+        }
+    }
+
     
     public function destroyUserSystem(request $request)
     {

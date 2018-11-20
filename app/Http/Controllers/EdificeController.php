@@ -39,25 +39,40 @@ class EdificeController extends Controller
 
         if($request->password === $request->password_confirmation)
         {
+            try{
+                $edifice = new Edifice;
 
-            $edifice = new Edifice;
+                $edifice->nameEdifice = $request->nameEdifice;
+                $edifice->contactEdifice = $request->contactEdifice;
+                $edifice->addressEdifice = $request->addressEdifice;
+                $edifice->emailEdifice = $request->emailEdifice;
+                $edifice->statusEdifice = 1;
+                $edifice->save();
 
-            $edifice->nameEdifice = $request->nameEdifice;
-            $edifice->contactEdifice = $request->contactEdifice;
-            $edifice->addressEdifice = $request->addressEdifice;
-            $edifice->emailEdifice = $request->emailEdifice;
-            $edifice->statusEdifice = 1;
-            $edifice->save();
+            }catch(\Illuminate\Database\QueryException $e){
 
-            $user = new User;
+                return redirect()->route('edifices.index')->with('info','Registro no exitoso, Verifique los datos!!');
 
-            $user->name = $request->contactEdifice;
-            $user->email = $request->emailEdifice;
-            $user->password = bcrypt($request->password);
-            $user->edifice_id = $edifice->id;
-            $user->role_id = 2;
-           
-            $user->save();
+            }
+
+            try{
+                $user = new User;
+
+                $user->name = $request->contactEdifice;
+                $user->email = $request->emailEdifice;
+                $user->password = bcrypt($request->password);
+                $user->edifice_id = $edifice->id;
+                $user->role_id = 2;
+                $user->save();
+
+            }catch(\Illuminate\Database\QueryException $e){
+
+                $id = $edifice->id;
+                $edifice->destroy($id);
+
+                return redirect()->route('edifices.index')->with('info','Registro no exitoso, Verifique los datos!!');
+
+            }
 
             return redirect()->route('edifices.index')->with('info', 'La empresa se ha registrado');
             
@@ -78,14 +93,20 @@ class EdificeController extends Controller
 
     public function update(EdificeRequest $request, $id){
 
-        $edifice = Edifice::find($id);
+        try{
+            $edifice = Edifice::find($id);
 
-        $edifice->nameEdifice = $request->nameEdifice;
-        $edifice->addressEdifice = $request->addressEdifice;
-        $edifice->contactEdifice = $request->contactEdifice;
-        $edifice->emailEdifice = $request->emailEdifice;
+            $edifice->nameEdifice = $request->nameEdifice;
+            $edifice->addressEdifice = $request->addressEdifice;
+            $edifice->contactEdifice = $request->contactEdifice;
+            $edifice->emailEdifice = $request->emailEdifice;
 
-        $edifice->save();
+            $edifice->save();
+
+        }catch(\Illuminate\Database\QueryException $e){
+
+            return redirect()->route('edifices.index')->with('info','No se ha editado, Verifique los datos!!');
+        }
 
         return redirect()->route('edifices.index')->with('info', 'El edificio se ha editado');
     }
