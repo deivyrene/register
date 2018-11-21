@@ -122,7 +122,7 @@ function destroyVisitor(id){
     });
   }
 
-  $('#listToday').click(function(){
+$('#listToday').click(function(){
     
     $('#tableFirst').show("slow");
     $('#tableRange').hide("slow");
@@ -130,6 +130,13 @@ function destroyVisitor(id){
     $('#tablePlaces').hide("slow");
 
 });
+
+$('#viewForm').click(function(){
+
+    $('#registerVisitor').show("slow");
+});
+
+
 
 $("#backRun").click(function(){
 

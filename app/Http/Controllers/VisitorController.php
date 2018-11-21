@@ -89,7 +89,12 @@ class VisitorController extends Controller
                                            ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id');
         }
         if($role === "adminEdifice"){
-            
+
+            $edifice_id = $request->user()->hasEdifice();
+
+            $visitor = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
+                                           ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
+                                           ->where('edifice_id', $edifice_id);
         }
         if($role === "user"){
 
@@ -102,7 +107,7 @@ class VisitorController extends Controller
 
                 $visitor = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
                                  ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
-                                 ->where('edifice_id', $edifice_id)->whereBetween('arrivalTime', [$fromDate, $toDate]);
+                                 ->where('edifice_id', $edifice_id)->whereBetween('arrivalTime', [$request->dateIn, $request->dateOf]);
                 
 
             }else{
@@ -127,9 +132,9 @@ class VisitorController extends Controller
 
             }else{
                 
-            $visitor = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
-                                 ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
-                                 ->where('edifice_id', $edifice_id)->whereDate('arrivalTime', Carbon::now()->format('Y-m-d'));
+                $visitor = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
+                                    ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
+                                    ->where('edifice_id', $edifice_id)->whereDate('arrivalTime', Carbon::now()->format('Y-m-d'));
 
             }
         }

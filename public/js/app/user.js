@@ -109,3 +109,17 @@ $('#email').change(function(){
     });
 
 });
+
+$('#verifyPassword').click(function(){
+
+    let pass = $('#password').val();
+    let pass_confirm = $('#password-confirmation').val();
+
+    if(pass !== pass_confirm){
+        alert('Las contraseñas no coinciden');
+        document.getElementById('password').value = "";
+        document.getElementById('password').focus();
+        document.getElementById('password-confirmation').value = "";
+        document.getElementById('password-confirmation').focus();
+    }
+});

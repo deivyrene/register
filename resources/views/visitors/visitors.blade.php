@@ -22,9 +22,6 @@
                                         <th>Nombre</th>
                                         <th>Apellido</th>
                                         <th>Rut</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Direccion</th>
                                         <th>Empresa</th>
                                         <th>Acción</th>
                                     </tr>

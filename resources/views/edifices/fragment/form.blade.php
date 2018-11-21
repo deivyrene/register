@@ -24,18 +24,18 @@
 <div class="row">
         <div class="col-sm form-group">
                 {{ Form::label('password', 'Contraseña') }}
-                {{ Form::text('password', null, ['class' => 'form-control', 'required', 'minlength="6"']) }}
+                {{ Form::text('password', null, ['class' => 'form-control', 'required', 'id' => 'password', 'minlength="6"']) }}
         </div>
         <div class="col-sm form-group">
                 {{ Form::label('password_confirmation', 'Contraseña') }}
-                {{ Form::text('password_confirmation', null, ['class' => 'form-control', 'required', 'minlength="6"']) }}
+                {{ Form::text('password_confirmation', null, ['class' => 'form-control', 'id' => 'password-confirmation', 'required', 'minlength="6"']) }}
         </div>
 </div>
 @endif
 <div class="row">
         <div class="col-sm-5"></div>
         <div class="col-sm-2 form-group">
-                {{ Form::submit('Guardar', ['class' => 'btn btn-warning']) }}
+                {{ Form::submit('Guardar', ['class' => 'btn btn-warning', 'id' => 'verifyPassword']) }}
         </div>
         <div class="col-sm-5"></div>
 </div>

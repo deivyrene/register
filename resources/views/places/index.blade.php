@@ -11,6 +11,7 @@
                         Listado de Oficinas
                         <a href="{{ route('places.create') }}" class="btn btn-sm btn-danger pull-right">Nuevo</a>
                         <a href="{{ url('import/get') }}" class="btn btn-sm btn-default pull-right">Importar</a>
+                        <a href="http://avilez.cl/registroOficinas.xlsx" class="btn btn-sm btn-info pull-right" descargas="RegistrOficinas" title="Formato para ingresar listado de oficinas">Descargar</a>
                     </h4>
                     
                    <!-- <p class="card-category"> Here is a subtitle for this table</p>-->

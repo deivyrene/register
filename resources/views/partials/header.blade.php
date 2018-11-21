@@ -44,12 +44,14 @@
                     @endif
                     
                 </li>
+            @if(Auth::user()->hasRole('admin'))
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('visitorsList') }}">
                     <i class="material-icons">person_add</i>
                     <p>Visitantes</p>
                 </a>
             </li>
+            @endif
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('visitors.index') }}">
                     <i class="material-icons">location_city</i>

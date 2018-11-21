@@ -12,8 +12,12 @@
 
         <div class=" col-sm form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 {{ Form::label('email', 'Email') }}
-                {{ Form::text('email', null, ['class' => 'form-control', 'required', 'id' => 'email']) }}
-                
+                @if(isset($userRole))
+                        {{ Form::text('email', null, ['class' => 'form-control', 'required', 'id' => 'email', 'disabled' ]) }}
+                @else
+                        {{ Form::text('email', null, ['class' => 'form-control', 'required', 'id' => 'email' ]) }}
+                @endif
+
                 @if ($errors->has('email'))
                 <span class="help-block">
                         <strong>{{ $errors->first('email') }}</strong>
@@ -64,5 +68,5 @@
 </div>
 
 <div class="form-group">
-        {{ Form::submit('guardar', ['class' => 'btn btn-sm btn-warning']) }}
+        {{ Form::submit('guardar', ['class' => 'btn btn-sm btn-warning', 'id' => 'verifyPassword']) }}
 </div>

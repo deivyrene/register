@@ -8,7 +8,7 @@
                 <a class="navbar-brand" href="#"> Bienvenido: {{ Auth::user()->name }} ( {{ Auth::user()->nameRole() }} )<br> 
                                                     
                                                 @if(Auth::user()->hasRole('adminEdifice'))
-                                                 ID: {{ Auth::user()->edifice_id }} |  Empresa: {{ Auth::user()->nameEdifice() }}  <br> 
+                                                 ID: {{ Auth::user()->edifice_id }} |  Edificio: {{ Auth::user()->nameEdifice() }}  <br> 
                                                 @endif
                 </a>
             </div>

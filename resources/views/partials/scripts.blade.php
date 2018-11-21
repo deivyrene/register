@@ -28,13 +28,13 @@
 <!-- Datatables -->
 <script src="{{{ URL::asset('js/jquery.dataTables.min.js') }}}"></script>
 
-<script src="{{{ URL::asset('js/plugins/dataTables/dataTables.buttons.min.js') }}}"></script>
-<script src="{{{ URL::asset('js/plugins/dataTables/buttons.flash.min.js') }}}"></script>
-<script src="{{{ URL::asset('js/plugins/dataTables/jszip.min.js') }}}"></script>
-<script src="{{{ URL::asset('js/plugins/dataTables/pdfmake.min.js') }}}"></script>
-<script src="{{{ URL::asset('js/plugins/dataTables/vfs_fonts.js') }}}"></script>
-<script src="{{{ URL::asset('js/plugins/dataTables/buttons.html5.min.js') }}}"></script>
-<script src="{{{ URL::asset('js/plugins/dataTables/buttons.print.min.js') }}}"></script>
+<script src="{{{ URL::asset('js/plugins/datatables/dataTables.buttons.min.js') }}}"></script>
+<script src="{{{ URL::asset('js/plugins/datatables/buttons.flash.min.js') }}}"></script>
+<script src="{{{ URL::asset('js/plugins/datatables/jszip.min.js') }}}"></script>
+<script src="{{{ URL::asset('js/plugins/datatables/pdfmake.min.js') }}}"></script>
+<script src="{{{ URL::asset('js/plugins/datatables/vfs_fonts.js') }}}"></script>
+<script src="{{{ URL::asset('js/plugins/datatables/buttons.html5.min.js') }}}"></script>
+<script src="{{{ URL::asset('js/plugins/datatables/buttons.print.min.js') }}}"></script>
 
 <!-- Archivo de funciones JS -->
 <script src="{{{ URL::asset('js/app/custom.js') }}}"></script>
