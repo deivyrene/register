@@ -96,12 +96,18 @@ class EdificeController extends Controller
         try{
             $edifice = Edifice::find($id);
 
+            $user = User::where('email',$edifice->emailEdifice)
+                              ->update(['email' => $request->emailEdifice, 
+                                        'name'  => $request->contactEdifice]);
+
             $edifice->nameEdifice = $request->nameEdifice;
             $edifice->addressEdifice = $request->addressEdifice;
             $edifice->contactEdifice = $request->contactEdifice;
             $edifice->emailEdifice = $request->emailEdifice;
 
+            
             $edifice->save();
+
 
         }catch(\Illuminate\Database\QueryException $e){
 

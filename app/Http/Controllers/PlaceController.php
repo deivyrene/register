@@ -207,6 +207,10 @@ class PlaceController extends Controller
 
                 $place = Place::find($id);
 
+                $user = User::where('email',$place->mailPlace)
+                              ->update(['email' => $request->mailPlace, 
+                                        'name'  => $request->ownerPlace]);
+                                        
                 $place->numberPlace = $request->numberPlace;
                 $place->namePlace   = $request->namePlace;
                 $place->phonePlace  = $request->phonePlace;
@@ -215,6 +219,9 @@ class PlaceController extends Controller
                 
                 $place->save();
 
+                
+                                
+                
             }catch (\Illuminate\Database\QueryException $e) {
 
                 return redirect()->route('places.index')->with('info','No se pudo editar, Verifique los datos!!');
@@ -300,7 +307,7 @@ class PlaceController extends Controller
 
                         $id = $place->id;
                         $place->destroy($id);
-                        
+
                         return redirect()->route('places.index')->with('info','Verifique los datos del archivo!!');
                     }
                     
