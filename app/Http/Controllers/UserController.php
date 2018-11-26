@@ -156,53 +156,30 @@ class UserController extends Controller
     {
         $tipo = $request->user()->typeRole();
 
-        if($request->password != ""){
-
             if($tipo === "admin"){
+                
+                $users = User::find($id);
 
-                $role = $request->role_id;
-                $edifice = $request->edifice_id;
-                if($role === "1"){
+                $users->name       = $request->name;
+                $users->email      = $request->email;
+                $users->password   = bcrypt($request->password);
 
-                    $users = User::find($id);
-
-                    $users->name       = $request->name;
-                    $users->email      = $request->email;
-                    $users->password   = bcrypt($request->password);
-                    
-                    $users->save();
-                }
-                if($role === "2"){
-
-                    $users = User::find($id);
-
-                    $users->name       = $request->name;
-                    $users->email      = $request->email;
-                    $users->password   = bcrypt($request->password);
-
-                    $users->save();
-                }
+                $users->save();
+                
             }
 
             if($tipo === "adminEdifice"){
-                
-                    $edifice_id = $request->user()->hasEdifice();
 
-                    $users = User::find($id);
+                $users = User::find($id);
 
-                    $users->name       = $request->name;
-                    $users->email      = $request->email;
-                    $users->password   = bcrypt($request->password);
+                $users->name      = $request->name;
+                $users->email     = $request->email;
+                $users->password  = bcrypt($request->password);
 
-                    $users->save();
+                $users->save();
             }
 
             return redirect()->route('users.index')->with('info','El usuario ha sido editado');
-
-        }else{
-            return redirect()->route('users.index')->with('info','Verifique contraseña');
-        }
-
         
     }
 

@@ -84,8 +84,10 @@ $('#role_id').change(function(){
 
 });
 
-$('#email').change(function(){
 
+var controladorTiempo = "";
+
+function validarMail() {
     let email = $('#email').val();
 
     $.ajax({
@@ -98,7 +100,6 @@ $('#email').change(function(){
                 document.getElementById("email").value = "";
                 document.getElementById("email").focus();
             }
-            
         }, 
         error:function(jqXHR, textStatus, errorThrown){
                 
@@ -107,6 +108,12 @@ $('#email').change(function(){
             console.log('error::'+jqXHR);
         }
     });
+}
+
+$('#email').on("keyup", function() {
+
+    clearTimeout(controladorTiempo);
+    controladorTiempo = setTimeout(validarMail, 250);
 
 });
 
@@ -115,11 +122,16 @@ $('#verifyPassword').click(function(){
     let pass = $('#password').val();
     let pass_confirm = $('#password-confirmation').val();
 
-    if(pass !== pass_confirm){
-        alert('Las contraseñas no coinciden');
-        document.getElementById('password').value = "";
-        document.getElementById('password').focus();
-        document.getElementById('password-confirmation').value = "";
-        document.getElementById('password-confirmation').focus();
+    if(pass !== ""){
+
+        if(pass !== pass_confirm){
+            alert('Las contraseñas no coinciden');
+            document.getElementById('password').value = "";
+            document.getElementById('password').focus();
+            document.getElementById('password-confirmation').value = "";
+            document.getElementById('password-confirmation').focus();
+        }
+        
     }
+    
 });

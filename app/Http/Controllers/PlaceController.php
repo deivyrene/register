@@ -201,8 +201,6 @@ class PlaceController extends Controller
 
         $role = $request->user()->typeRole();
 
-        if($role === "admin"){
-
             try{
 
                 $place = Place::find($id);
@@ -220,35 +218,10 @@ class PlaceController extends Controller
                 $place->save();
 
                 
-                                
-                
             }catch (\Illuminate\Database\QueryException $e) {
 
                 return redirect()->route('places.index')->with('info','No se pudo editar, Verifique los datos!!');
             }
-        }
-
-        if($role === "adminEdifice"){
-
-            try{
-
-                $edifice_id = $request->user()->hasEdifice();
-
-                $place = Place::find($id);
-
-                $place->numberPlace = $request->numberPlace;
-                $place->namePlace   = $request->namePlace;
-                $place->phonePlace  = $request->phonePlace;
-                $place->ownerPlace  = $request->ownerPlace;
-                $place->mailPlace   = $request->mailPlace;
-            
-                $place->save();
-
-            }catch (\Illuminate\Database\QueryException $e) {
-                
-                return redirect()->route('places.index')->with('info','No se pudo editar, Verifique los datos!!');
-            }
-        }
 
         return redirect()->route('places.index')->with('info','Se ha editado exitosamente');
 
