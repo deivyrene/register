@@ -11,6 +11,7 @@ use Siac\Http\Controllers\Controller;
 use Siac\User;
 use Siac\Role;
 use Siac\Edifice;
+use Siac\Place;
 
 use Yajra\Datatables\Datatables;
 use Yajra\DataTables\Services\DataTable;
@@ -156,30 +157,25 @@ class UserController extends Controller
     {
         $tipo = $request->user()->typeRole();
 
-            if($tipo === "admin"){
-                
-                $users = User::find($id);
+            
+            $users = User::find($id);
+
+                $edifice = Edifice::where('emailEdifice',$users->email)
+                                  ->update(['emailEdifice' => $request->email, 
+                                            'contactEdifice'  => $request->name]);
+
+                $place = Place::where('mailPlace',$users->email)
+                               ->update(['mailPlace' => $request->email, 
+                                         'ownerPlace'  => $request->name]);
 
                 $users->name       = $request->name;
                 $users->email      = $request->email;
                 $users->password   = bcrypt($request->password);
 
                 $users->save();
-                
-            }
 
-            if($tipo === "adminEdifice"){
-
-                $users = User::find($id);
-
-                $users->name      = $request->name;
-                $users->email     = $request->email;
-                $users->password  = bcrypt($request->password);
-
-                $users->save();
-            }
-
-            return redirect()->route('users.index')->with('info','El usuario ha sido editado');
+            
+        return redirect()->route('users.index')->with('info','El usuario ha sido editado');
         
     }
 

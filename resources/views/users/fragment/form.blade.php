@@ -13,7 +13,7 @@
         <div class=" col-sm form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                 {{ Form::label('email', 'Email') }}
                 @if(isset($userRole))
-                        {{ Form::text('email', null, ['class' => 'form-control', 'required', 'id' => 'email', 'disabled' ]) }}
+                        {{ Form::text('email', null, ['class' => 'form-control', 'required', 'id' => 'email' ]) }}
                 @else
                         {{ Form::text('email', null, ['class' => 'form-control', 'required', 'id' => 'email' ]) }}
                 @endif

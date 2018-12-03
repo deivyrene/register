@@ -84,5 +84,11 @@ Route::group(['middleware' => ['auth']], function () {
     //Route para verificar email duplicado
     Route::get('verifyEmail', 'UserController@verifyEmail');
 
+    //Route para listar empresas registradas
+    Route::get('getCompanyVisitors', 'VisitorController@getCompanyVisitors');
+
+    //Route para listar oficinas filtradas por empresa
+    Route::get('getPlaceEdifice', 'PlaceController@getPlaceEdifice');
+
     
 });

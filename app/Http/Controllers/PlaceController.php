@@ -298,4 +298,12 @@ class PlaceController extends Controller
 
     }
 
+    public function getPlaceEdifice(){
+
+        $edifice_id = $request->user()->hasEdifice();
+        $places = Place::where('edifice_id','=',$edifice_id)->get();
+
+        return response()->json($places); 
+    }
+
 }

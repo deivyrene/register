@@ -258,4 +258,13 @@ class VisitorController extends Controller
          }
     }
 
+    public function getCompanyVisitors(Request $request){
+
+        $query = $request->companyVisitors;
+
+        $company = Visitor::all();
+
+        return response()->json($company);
+    }
+
 }
