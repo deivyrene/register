@@ -298,7 +298,7 @@ class PlaceController extends Controller
 
     }
 
-    public function getPlaceEdifice(){
+    public function getPlaceEdifice(Request $request){
 
         $edifice_id = $request->user()->hasEdifice();
         $places = Place::where('edifice_id','=',$edifice_id)->get();

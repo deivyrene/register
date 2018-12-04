@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @extends('auth.login')
+    @extends('auth.login_user')
     
     <header class="masthead text-center text-white d-flex">
       <div class="container my-auto">

@@ -352,8 +352,8 @@ function hinter(event) {
 		window.hinterXHR.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				var response = JSON.parse( this.responseText ); 
-				huge_list.innerHTML = "";
-                console.log(response);
+                huge_list.innerHTML = "";
+                
 				response.forEach(function(item) {
                     // Create a new <option> element.
                     var option = document.createElement('option');
@@ -362,9 +362,28 @@ function hinter(event) {
                 });
 			}
 		};
-		window.hinterXHR.open("GET", "/getCompanyVisitors", true);
+		window.hinterXHR.open("GET", "/getCompanyVisitors/"+ input.value, true);
 		window.hinterXHR.send()
 	}
 }
 
 //Cargar opcion empresas
+window.addEventListener("load", function(){
+
+    var route = "/getPlaceEdifice";
+
+        $.ajax({
+          type: "GET",
+          url: route, 
+          dataType: "json",
+          success: function(data){
+            $.each(data,function(key, place) {
+              $("#place_id").append('<option value='+place.id+'>'+place.namePlace+'</option>');
+            });        
+          },
+          error: function(data) {
+            alert('error');
+          }
+        });
+
+ })

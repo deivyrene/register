@@ -19,7 +19,7 @@ background-size: 100% 100%; display: flex; flex-direction: column; height: 100%;
                                 <div class="col-md input-group">
                                         <input type="text" name="rutVisitor" style="text-transform:uppercase" title="Run" id="rutVisitorForm" placeholder="Run" maxlength="9"  class="form-control">
                                         <div class="input-group-append">
-                                                <button class="form-control" id="searchRun" type="button">Buscar</button>
+                                                <button class="form-control" id="searchRun" type="button">Send</button>
                                         </div>
                                 </div>
                                 <div class="col-md form-group">

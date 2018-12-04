@@ -258,13 +258,20 @@ class VisitorController extends Controller
          }
     }
 
-    public function getCompanyVisitors(Request $request){
+    public function getCompanyVisitors(Request $request, $input){
 
-        $query = $request->companyVisitors;
+       
+        $company = Visitor::where('companyVisitor', 'like', '%'.$input.'%')->get();
+        
+        $results[] = [''];
 
-        $company = Visitor::all();
+        foreach ($company as $key => $query){
 
-        return response()->json($company);
+            $results[] = [$query->companyVisitor]; //you can take custom values as you want
+        }
+
+       
+        echo json_encode(array_values($results));
     }
 
 }
