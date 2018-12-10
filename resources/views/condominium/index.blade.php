@@ -23,23 +23,23 @@ background-size: 100% 100%; display: flex; flex-direction: column; height: 100%;
                                         </div>
                                 </div>
                                 <div class="col-md form-group">
-                                        <input type="text" name="nameVisitor" title="Nombres" id="nameVisitor" placeholder="Nombres" class="form-control">
+                                        <input type="text" disabled name="nameVisitor" title="Nombres" id="nameVisitor" placeholder="Nombres" class="form-control">
                                 </div>
                                 <div class="col-md form-group">
-                                        <input type="text" name="surnameVisitor" title="Apellidos" id="surnameVisitor" placeholder="Apellidos" class="form-control">
+                                        <input type="text" disabled name="surnameVisitor" title="Apellidos" id="surnameVisitor" placeholder="Apellidos" class="form-control">
                                 </div>
                        
                                 <div class="col-sm form-group">
-                                        <input type="text" name="companyVisitor" title="Empresa" id="companyVisitor" list="huge_list" placeholder="Empresa" class="form-control">
+                                        <input type="text" disabled name="companyVisitor" title="Empresa" id="companyVisitor" list="huge_list" placeholder="Empresa" class="form-control">
                                         <datalist id="huge_list"></datalist>
                                 </div>  
                                 <div class="col-sm form-group">
-                                        <select class="form-control" name="place_id" id="place_id">
+                                        <select disabled class="form-control" name="place_id" id="place_id">
                                                         <option value="0">Oficina</option>
                                         </select>
                                 </div>
                                 <div class="col-sm form-group" style="margin-top: 6px;">
-                                                <button class="btn btn-sm btn-primary" id="saveVisitor" type="button">Registrar</button>
+                                                <button disabled class="btn btn-sm btn-primary" id="saveVisitor" type="button">Registrar</button>
                                 </div>  
                         </div>
                 </div> 

@@ -161,15 +161,12 @@ class UserController extends Controller
             $users = User::find($id);
 
                 $edifice = Edifice::where('emailEdifice',$users->email)
-                                  ->update(['emailEdifice' => $request->email, 
-                                            'contactEdifice'  => $request->name]);
+                                  ->update(['contactEdifice'  => $request->name]);
 
                 $place = Place::where('mailPlace',$users->email)
-                               ->update(['mailPlace' => $request->email, 
-                                         'ownerPlace'  => $request->name]);
+                               ->update(['ownerPlace'  => $request->name]);
 
                 $users->name       = $request->name;
-                $users->email      = $request->email;
                 $users->password   = bcrypt($request->password);
 
                 $users->save();

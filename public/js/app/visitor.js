@@ -177,7 +177,10 @@ $('#searchRun').click(function(){
                     $('#surnameVisitor').val(data[0].surnameVisitor).prop('disabled', false);
                     $('#rutVisitorForm').val(data[0].rutVisitor).prop('disabled', false);
                     $('#companyVisitor').val(data[0].companyVisitor).prop('disabled', false);
+                    $('#place_id').prop('disabled', false);
+                    $('#saveVisitor').prop('disabled', false);
                     $('#flag').val("1");
+                    
                 }
                 else{
                     alert("No existe, rellene los campos!!");
@@ -191,6 +194,8 @@ $('#searchRun').click(function(){
                     $('#nameVisitor').val("").prop('disabled', false);
                     $('#surnameVisitor').val("").prop('disabled', false);
                     $('#companyVisitor').val("").prop('disabled', false);
+                    $('#place_id').prop('disabled', false);
+                    $('#saveVisitor').prop('disabled', false);
                     $('#flag').val("0");
                 }   
         });
@@ -382,7 +387,10 @@ window.addEventListener("load", function(){
             });        
           },
           error: function(data) {
-            alert('error');
+            if(data.responseJSON.error !== "Unauthenticated."){
+                alert('error');
+            }
+            
           }
         });
 

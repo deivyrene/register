@@ -102,12 +102,12 @@ class VisitorController extends Controller
 
             if($request->flag == "dateRange"){
 
-                $fromDate =  Carbon::parse($request->dateIn)->timestamp;
-                $toDate = Carbon::parse($request->dateOf)->timestamp;
+                $fromDate =  Carbon::parse($request->dateIn)->startOfDay();
+                $toDate = Carbon::parse($request->dateOf)->endOfDay();
 
                 $visitor = \DB::table('places')->join('place_visitors', 'places.id', '=', 'place_visitors.place_id' )
                                  ->join('visitors', 'place_visitors.visitor_id', '=', 'visitors.id')
-                                 ->where('edifice_id', $edifice_id)->whereBetween('arrivalTime', [$request->dateIn, $request->dateOf]);
+                                 ->where('edifice_id', $edifice_id)->whereBetween('arrivalTime', [$fromDate, $toDate]);
                 
 
             }else{
