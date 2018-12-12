@@ -336,18 +336,17 @@ function outVisitor(id){
 
 //Buscador de empresa 
 window.addEventListener("load", function(){
-	// Add a keyup event listener to our input element
+	
 	document.getElementById('companyVisitor').addEventListener("keyup", function(event){hinter(event)});
-	// create one global XHR object 
-	// so we can abort old requests when a new one is make
+	
 	window.hinterXHR = new XMLHttpRequest();
 });
 
-// Autocomplete for form
+// Autocompletar empresa
 function hinter(event) {
 	var input = event.target;
 	var huge_list = document.getElementById('huge_list');
-	// minimum number of characters before we start to generate suggestions
+	
 	var min_characters = 0;
 
 	if (!isNaN(input.value) || input.value.length < min_characters ) { 
@@ -360,7 +359,7 @@ function hinter(event) {
                 huge_list.innerHTML = "";
                 
 				response.forEach(function(item) {
-                    // Create a new <option> element.
+                    
                     var option = document.createElement('option');
                     option.value = item;
                     huge_list.appendChild(option);
@@ -395,3 +394,35 @@ window.addEventListener("load", function(){
         });
 
  })
+
+//Validar RUT
+
+var Fn = {
+	// Valida el rut con su cadena completa "XXXXXXXX-X"
+	validaRut : function (rutCompleto) {
+		rutCompleto = rutCompleto.replace("‐","-");
+		if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
+			return false;
+		var tmp 	= rutCompleto.split('-');
+		var digv	= tmp[1]; 
+		var rut 	= tmp[0];
+		if ( digv == 'K' ) digv = 'k' ;
+		
+		return (Fn.dv(rut) == digv );
+	},
+	dv : function(T){
+		var M=0,S=1;
+		for(;T;T=Math.floor(T/10))
+			S=(S+T%10*(9-M++%6))%11;
+		return S?S-1:'k';
+	}
+}
+
+
+$("#btnvalida").click(function(){
+	if (Fn.validaRut( $("#txt_rut").val() )){
+		$("#msgerror").html("El rut ingresado es válido :D");
+	} else {
+		$("#msgerror").html("El Rut no es válido :'( ");
+	}
+});
