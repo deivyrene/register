@@ -17,10 +17,12 @@ background-size: 100% 100%; display: flex; flex-direction: column; height: 100%;
                         <input type="hidden" name="visitor_id" id="visitor_id" value="0">
                         <div class="row">
                                 <div class="col-md input-group">
-                                        <input type="text" name="rutVisitor" style="text-transform:uppercase" title="Run" id="rutVisitorForm" placeholder="Run" maxlength="9"  class="form-control">
+                                        <input type="text" name="rutVisitor" placeholder="11111111-1" style="font-size:12px" title="Run" id="rutVisitorForm" placeholder="Run" maxlength="10"  class="form-control">
                                         <div class="input-group-append">
-                                                <span class="input-group-addon" id="sizing-addon1">Rut</span>
+                                                <button class="form-control" id="searchRun" type="button">Rut</button>
                                         </div>
+                                        <p>&nbsp;</p>
+                                        <p class="text-info" id="msgerror"></p>
                                 </div>
                                 <div class="col-md form-group">
                                         <input type="text" disabled name="nameVisitor" title="Nombres" id="nameVisitor" placeholder="Nombres" class="form-control">

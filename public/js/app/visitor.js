@@ -150,12 +150,7 @@ $('#searchRun').click(function(){
      var route = "/getvisitor";
      var rutVisitor = $('#rutVisitorForm').val();
      
-
-    if(rutVisitor.length == 0){
-        alert('Ingrese Run');
-        return false;
-    }
-    else{
+    if (Fn.validaRut( $("#rutVisitorForm").val() )){
 
         $.ajax({
             type: 'get',
@@ -183,7 +178,7 @@ $('#searchRun').click(function(){
                     
                 }
                 else{
-                    alert("No existe, rellene los campos!!");
+                    $("#msgerror").html("Sin registro, rellene los campos!!");
                     $('#buscarRun').modal('toggle');
                     //$('#tableFirst').hide("slow");
                     //$('#tableRange').hide("slow");
@@ -199,7 +194,9 @@ $('#searchRun').click(function(){
                     $('#flag').val("0");
                 }   
         });
-    }
+    } else {
+		$("#msgerror").html("El Rut no es válido ");
+	}
  
  });
 
@@ -395,6 +392,7 @@ window.addEventListener("load", function(){
 
  })
 
+ 
 //Validar RUT
 
 var Fn = {
@@ -413,16 +411,11 @@ var Fn = {
 	dv : function(T){
 		var M=0,S=1;
 		for(;T;T=Math.floor(T/10))
-			S=(S+T%10*(9-M++%6))%11;
+            S=(S+T%10*(9-M++%6))%11;
 		return S?S-1:'k';
 	}
 }
 
-
-$("#btnvalida").click(function(){
-	if (Fn.validaRut( $("#txt_rut").val() )){
-		$("#msgerror").html("El rut ingresado es válido :D");
-	} else {
-		$("#msgerror").html("El Rut no es válido :'( ");
-	}
+$('#rutVisitorForm').keydown(function(){
+    console.log(Fn.dv($('#rutVisitorForm').val()));
 });
